@@ -14,7 +14,7 @@ COINDAEMONCLI=bitcoingenx-cli
 COINCORE=.bitcoingenx
 COINCONFIG=bitcoingenx.conf
 #Setting Colors
-BLUE='033[0;36m'
+BLUE='\033[0;36m'
 GREEN='\033[0;92m'
 RED='\033[0;91m'
 YELLOW='\033[0;93m'
@@ -113,7 +113,7 @@ echo "listen=0" >> /home/${COINl}/.${COINl}/${COINCONFIG}
 echo "externalip=$(hostname  -I | cut -f1 -d' '):$COINPORT" >> /home/${COINl}/.${COINl}/${COINCONFIG}
 echo "masternodeprivkey=$privkey" >> /home/${COINl}/.${COINl}/${COINCONFIG}
 sleep 5
-echo ${CLEAR}
+echo
 echo -e ${BOLD}"Launching First ${COIN3} Node"${CLEAR}
 ${COINDAEMON} -datadir=/home/${COINl}/.${COINl} -daemon
 sleep 60
@@ -137,7 +137,7 @@ echo -e ${BOLD}"Launching Second ${COIN3} Node"${CLEAR}
 ${COINDAEMON} -datadir=/home/${COINl}2/.${COINl} -daemon
 sleep 60
 # Third Node Configuration and launch
-echo -e "${GREEN}Configuring Third Node${CLEAR}"
+echo -e ${GREEN}"Configuring Third Node${CLEAR}"
 sudo mkdir /home/${COINl}3/.${COINl}
 sudo touch /home/${COINl}3/.${COINl}/${COINCONFIG}
 echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> /home/${COINl}3/.${COINl}/${COINCONFIG}
@@ -195,10 +195,10 @@ echo -e "${YELLOW}For MN#3- ${COINDAEMONCLI} -datadir=/home/${COINl}3/.${COINl} 
 echo -e "${YELLOW}For MN#3- ${COINDAEMONCLI} -datadir=/home/${COINl}4/.${COINl} masternode status"${CLEAR}
 echo
 fi
-echo -e ${BLUE}"Your patronage is apprappreciated, tipping addresses"${CLEAR}
-echo -e ${BLUE}"${COIN} address: BoEsUmcS3D9gVmdxvj7Che4wD1SAHa2zG9"${CLEAR}
-echo -e ${BLUE}"LTC address: MUdDdVr4Az1dVw47uC4srJ31Ksi5SNkC7H"${CLEAR}
-echo -e ${BLUE}"BTC address: 32FzghE1yUZRdDmCkj3bJ6vJyXxUVPKY93"${CLEAR}
+echo -e ${BLUE}" Your patronage is apprappreciated, tipping addresses"${CLEAR}
+echo -e ${BLUE}" ${COIN} address: BoEsUmcS3D9gVmdxvj7Che4wD1SAHa2zG9"${CLEAR}
+echo -e ${BLUE}" LTC address: MUdDdVr4Az1dVw47uC4srJ31Ksi5SNkC7H"${CLEAR}
+echo -e ${BLUE}" BTC address: 32FzghE1yUZRdDmCkj3bJ6vJyXxUVPKY93"${CLEAR}
 echo
 echo -e ${YELLOW}"Need help?  Find Sburns1369#1584 one Discord - https://discord.gg/YhJ8v3g"${CLEAR}
 echo
