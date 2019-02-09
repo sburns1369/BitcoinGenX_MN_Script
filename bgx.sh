@@ -32,10 +32,10 @@ echo -e ${GREEN}"Please enter the number (1-4) of $COIN Masternode(s)"${CLEAR}
 echo -e ${GREEN}"you would like to install :"${CLEAR}
 read NUMBER
 case $NUMBER in
-  1)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3}_single.sh);;
-  2)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3}_2pack.sh);;
-  3)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3}_3pack.sh);;
-  4)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3}_4pack.sh);;
+  1)echo -e "bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3}_single.sh)";;
+  2)echo -e "bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3}_2pack.sh)";;
+  3)echo -e "bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3}_3pack.sh)";;
+  4)echo -e "bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3}_4pack.sh)";;
   *)echo -e ${RED}"Invalid Option - Exiting Setup - Re-run to try again"${CLEAR};;
 esac
 else
