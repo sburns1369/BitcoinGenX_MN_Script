@@ -200,7 +200,7 @@ echo -e ${BLUE}"${COIN} address: BoEsUmcS3D9gVmdxvj7Che4wD1SAHa2zG9"${CLEAR}
 echo -e ${BLUE}"LTC address: MUdDdVr4Az1dVw47uC4srJ31Ksi5SNkC7H"${CLEAR}
 echo -e ${BLUE}"BTC address: 32FzghE1yUZRdDmCkj3bJ6vJyXxUVPKY93"${CLEAR}
 echo
-echo -e "Need help?  Find Sburns1369#1584 one Discord - https://discord.gg/YhJ8v3g"
+echo -e ${YELLOW}"Need help?  Find Sburns1369#1584 one Discord - https://discord.gg/YhJ8v3g"${CLEAR}
 echo
 echo
-echo ${RED}"The END."${CLEAR};
+echo -e ${RED}"The END."${CLEAR};
