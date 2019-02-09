@@ -87,8 +87,8 @@ sudo dd if=/dev/zero of=/var/swap.img bs=1024k count=4096
 sudo mkswap /var/swap.img
 sudo swapon /var/swap.img
 cd ~
-sudo mkdir /root/xgs
-cd /root/xgs
+sudo mkdir /root/${COIN3l}
+cd /root/${COIN3l}
 echo "Downloading latest binaries"
 wget https://github.com/BitcoinGenX/BitcoinGenesisX/files/2797050/bitcoingenx-linux.zip
 unzip bitcoingenx-linux.zip
