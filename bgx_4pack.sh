@@ -1,5 +1,5 @@
 #!/bin/bash
-#ScriptVersion 0.06a
+#ScriptVersion 0.06b
 COIN=BitcoinGenX
 COINl=bitcoingenx
 COIN3=BGX
