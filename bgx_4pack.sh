@@ -186,13 +186,13 @@ echo -e ${BOLD} "If you become disconnected, you can check the status of sync'in
 echo -e "${YELLOW}For MN#1- ${COINDAEMONCLI} -datadir=/home/${COINl}/.${COINl} mnsync status"${CLEAR}
 echo -e "${YELLOW}For MN#2- ${COINDAEMONCLI} -datadir=/home/${COINl}2/.${COINl} mnsync status"${CLEAR}
 echo -e "${YELLOW}For MN#3- ${COINDAEMONCLI} -datadir=/home/${COINl}3/.${COINl} mnsync status"${CLEAR}
-echo -e "${YELLOW}For MN#3- ${COINDAEMONCLI} -datadir=/home/${COINl}4/.${COINl} mnsync status"${CLEAR}
+echo -e "${YELLOW}For MN#4- ${COINDAEMONCLI} -datadir=/home/${COINl}4/.${COINl} mnsync status"${CLEAR}
 echo -e
 echo -e ${BOLD}"You can check the status of your ${COIN3} Masternode with"${CLEAR}
 echo -e "${YELLOW}For MN#1- ${COINDAEMONCLI} -datadir=/home/${COINl}/.${COINl} masternode status"${CLEAR}
 echo -e "${YELLOW}For MN#2- ${COINDAEMONCLI} -datadir=/home/${COINl}2/.${COINl} masternode status"${CLEAR}
 echo -e "${YELLOW}For MN#3- ${COINDAEMONCLI} -datadir=/home/${COINl}3/.${COINl} masternode status"${CLEAR}
-echo -e "${YELLOW}For MN#3- ${COINDAEMONCLI} -datadir=/home/${COINl}4/.${COINl} masternode status"${CLEAR}
+echo -e "${YELLOW}For MN#4- ${COINDAEMONCLI} -datadir=/home/${COINl}4/.${COINl} masternode status"${CLEAR}
 echo
 fi
 echo -e ${BLUE}" Your patronage is apprappreciated, tipping addresses"${CLEAR}
