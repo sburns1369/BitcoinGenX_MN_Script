@@ -1,5 +1,5 @@
 #!/bin/bash
-SCRIPTVERSION=0.7c
+SCRIPTVERSION=0.7e
 COIN=BitcoinGenX
 COINl=bitcoingenx
 COIN3=BGX
@@ -14,6 +14,8 @@ COINDAEMONCLI=bitcoingenx-cli
 COINCORE=.bitcoingenx
 COINCONFIG=bitcoingenx.conf
 COINVERSION=1.5.0
+NODESL=Four
+NODESN=4
 #AGREE = Agree to install Masternode
 #NULLREC = Agree to Record nullentrydev information
 #Setting Colors
@@ -31,7 +33,7 @@ if [[ $(lsb_release -d) != *16.04* ]]; then
 fi
 echo
 echo
-echo -e ${GREEN}"Are you sure you want to continue installation of Four ${COIN} Masternodes?"
+echo -e ${GREEN}"Are you sure you want to continue installation of ${NODESL} ${COIN} Masternodes?"
 echo -e "type y/n followed by [ENTER]:"${CLEAR}
 read AGREE
 if [[ $AGREE =~ "y" ]] ; then
@@ -70,7 +72,7 @@ echo
 echo -e ${GREEN}"Please Enter Your Fourth Masternode Private Key:"${CLEAR}
 read privkey4
 echo
-echo "Creating 4 ${COIN} system users with no-login access:"
+echo "Creating ${NODESN} ${COIN} system users with no-login access:"
 sudo adduser --system --home /home/${COINl} ${COINl}
 sudo adduser --system --home /home/${COINl}2 ${COINl}2
 sudo adduser --system --home /home/${COINl}3 ${COINl}3
@@ -103,7 +105,9 @@ sudo apt-get -y upgrade
 # Checking to see if Dependencies & Software Libraries have been installed
 if grep -Fxq "dependenciesInstalled: true" /usr/local/nullentrydev/mnodes.log
 then
-    echo -e ${RED}"Skipping... Dependencies & Software Libraries - Previously installed"${CLEAR}
+  echo
+  echo -e ${RED}"Skipping... Dependencies & Software Libraries - Previously installed"${CLEAR}
+  echo
 else
   echo ${RED}"Installing Dependencies & Software Libraries"${CLEAR}
   sudo apt-get -y install software-properties-common
@@ -148,7 +152,7 @@ sudo mv /root/${COIN3l}/${COINDAEMON} /root/${COIN3l}/${COINDAEMONCLI} /usr/loca
 sudo chmod 755 -R  /usr/local/bin/${COINl}*
 rm -rf /roocdt/${COIN3l}
 # First Node Configuration and launch
-echo -e "${GREEN}Configuring First Node${CLEAR}"
+echo -e "${GREEN}Configuring First ${COIN} Node${CLEAR}"
 sudo mkdir /home/${COINl}/.${COINl}
 sudo touch /home/${COINl}/.${COINl}/${COINCONFIG}
 echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> /home/${COINl}/.${COINl}/${COINCONFIG}
@@ -175,7 +179,7 @@ echo -e ${BOLD}"Launching First ${COIN3} Node"${CLEAR}
 ${COINDAEMON} -datadir=/home/${COINl}/.${COINl} -daemon
 sleep 60
 # Second Node Configuration and launch
-echo -e "${GREEN}Configuring Second Node${CLEAR}"
+echo -e "${GREEN}Configuring Second ${COIN} Node${CLEAR}"
 sudo mkdir /home/${COINl}2/.${COINl}
 sudo touch /home/${COINl}2/.${COINl}/${COINCONFIG}
 echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> /home/${COINl}2/.${COINl}/${COINCONFIG}
@@ -202,7 +206,7 @@ echo -e ${BOLD}"Launching Second ${COIN3} Node"${CLEAR}
 ${COINDAEMON} -datadir=/home/${COINl}2/.${COINl} -daemon
 sleep 60
 # Third Node Configuration and launch
-echo -e "${GREEN}Configuring Third Node${CLEAR}"
+echo -e "${GREEN}Configuring Third ${COIN} Node${CLEAR}"
 sudo mkdir /home/${COINl}3/.${COINl}
 sudo touch /home/${COINl}3/.${COINl}/${COINCONFIG}
 echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> /home/${COINl}3/.${COINl}/${COINCONFIG}
@@ -229,7 +233,7 @@ echo -e ${BOLD}"Launching Third ${COIN3} Node"${CLEAR}
 ${COINDAEMON} -datadir=/home/${COINl}3/.${COINl} -daemon
 sleep 60
 # Fourth Node Configuration and launch
-echo -e "${GREEN}Configuring Fourth Node${CLEAR}"
+echo -e "${GREEN}Configuring Fourth ${COIN} Node${CLEAR}"
 sudo mkdir /home/${COINl}4/.${COINl}
 sudo touch /home/${COINl}4/.${COINl}/${COINCONFIG}
 echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> /home/${COINl}4/.${COINl}/${COINCONFIG}
@@ -256,7 +260,7 @@ echo -e ${BOLD}"Launching Fourth ${COIN3} Node"${CLEAR}
 ${COINDAEMON} -datadir=/home/${COINl}4/.${COINl} -daemon
 sleep 60
 echo
-echo -e ${BOLD}"All ${COIN3} Node Launched, please wait for it to sync".${CLEAR}
+echo -e ${BOLD}"All ${NODESN} ${COIN3} Nodes Launched, please wait for it to sync".${CLEAR}
 echo
 echo -e "${BOLD}Your Masternodes are sync'ing this will take some time."${CLEAR}
 echo -e "While you wait you can configure your masternode.conf in your local wallet"${CLEAR}
@@ -276,7 +280,7 @@ echo -e "${YELLOW}For ${COINDAEMONCLI} -datadir=/home/${COINl}4/.${COINl} master
 echo
 fi
 echo -e ${BLUE}" Your patronage is apprappreciated, tipping addresses"${CLEAR}
-echo -e ${BLUE}" ${COIN} address: BoEsUmcS3D9gVmdxvj7Che4wD1SAHa2zG9"${CL
+echo -e ${BLUE}" ${COIN} address: BoEsUmcS3D9gVmdxvj7Che4wD1SAHa2zG9"${CLEAR}
 echo -e ${BLUE}" LTC address: MUdDdVr4Az1dVw47uC4srJ31Ksi5SNkC7H"${CLEAR}
 echo -e ${BLUE}" BTC address: 32FzghE1yUZRdDmCkj3bJ6vJyXxUVPKY93"${CLEAR}
 echo
