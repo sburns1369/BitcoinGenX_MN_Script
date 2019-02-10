@@ -37,7 +37,7 @@ Paste the address in the fresh Notepad
 
 ***Repeat that process 4 times, if making 4 masternodes, I suggest MN2, MN3, MN4 for logical reasons as label) ***
 
-Now send the collateral of exactly 5000 coins, do not include transmission cost in the send amount
+Now send the collateral of exactly 1000 coins, do not include transmission cost in the send amount
   -it will be automatically deducted.
 Wait for each transaction to have 6 confirmations.
   -you can hold your cursor over the transactions under "transactions" to see number of confirms
