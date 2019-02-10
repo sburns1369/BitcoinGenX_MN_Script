@@ -26,7 +26,7 @@ if [[ $(lsb_release -d) != *16.04* ]]; then
 fi
 echo
 echo
-echo -e ${GREEN}"Are you sure you want to continue installation of Two ${COIN} Masternodes?"
+echo -e ${GREEN}"Are you sure you want to continue installation of a single ${COIN} Masternodes?"
 echo -e "type y/n followed by [ENTER]:"${CLEAR}
 read AGREE
 if [[ $AGREE =~ "y" ]] ; then
