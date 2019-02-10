@@ -121,6 +121,6 @@ Find Sburns1369#1584 on Discord - https://discord.gg/YhJ8v3g
 Website will hopefully by up early March 2019
 
 Tips are always appreciated
-GenesisX address: GZXonqnH2cjPgQZL59urDZS2CBzxPzoQ1j - Not BGX
+GenesisX address: BoEsUmcS3D9gVmdxvj7Che4wD1SAHa2zG9 - Not BGX
 LTC address: MUdDdVr4Az1dVw47uC4srJ31Ksi5SNkC7H
 BTC address: 32FzghE1yUZRdDmCkj3bJ6vJyXxUVPKY93
