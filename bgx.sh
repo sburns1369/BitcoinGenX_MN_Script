@@ -1,5 +1,5 @@
 #!/bin/bash
-#ScriptVersion 0.06a
+#ScriptVersion 0.07e
 #setting varibles
 COIN=BitcoinGenX
 COIN3l=bgx
