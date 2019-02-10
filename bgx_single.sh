@@ -40,7 +40,7 @@ echo
 echo -e ${GREEN}"Right Click to paste in some SSH Clients"${CLEAR}
 echo
 echo
-echo -e ${GREEN}"Please Enter Your First Masternode Private Key:"${CLEAR}
+echo -e ${GREEN}"Please Enter Your Masternode Private Key:"${CLEAR}
 read privkey
 echo
 echo "Creating a single ${COIN} system users with no-login access:"
