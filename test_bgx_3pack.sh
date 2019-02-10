@@ -8,7 +8,6 @@ COINPORT=4488
 COINRPCPORT1=19022
 COINRPCPORT2=19023
 COINRPCPORT3=19024
-COINRPCPORT4=19025
 COINDAEMON=bitcoingenxd
 COINDAEMONCLI=bitcoingenx-cli
 COINCORE=.bitcoingenx
@@ -68,9 +67,6 @@ read privkey2
 echo
 echo -e ${GREEN}"Please Enter Your Third Masternode Private Key:"${CLEAR}
 read privkey3
-echo
-echo -e ${GREEN}"Please Enter Your Fourth Masternode Private Key:"${CLEAR}
-read privkey4
 echo
 echo "Creating ${NODESN} ${COIN} system users with no-login access:"
 sudo adduser --system --home /home/${COINl} ${COINl}
