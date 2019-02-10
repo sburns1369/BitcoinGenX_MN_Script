@@ -1,9 +1,9 @@
 # BitcoinGenX_MN_Script
 1 to 4 Masternode Installation Script for BitcoinGenX
 
---- Will updated Proper later.  Steps will Work, just use BitcoinGenX name ----
+BitcoinGenX
 
-# GenesisX_MN_Script
+# bitcoingenx_MN_Script
 Installation Script for Installing up to 4 GenesisX Masternodes (XGS Version 1.4.0)
 
 This script is for use on fresh installations of Ubuntu 16.04 x64 only; or Ubuntu 16.04 x64 installations that were installed by other Sburns/NullEntry (Github = https://github.com/sburns1369).  All scripts where tested on a Vultr VPS
@@ -20,13 +20,13 @@ Hit "y" to start when prompted enter masternode private key(s)
 Wait about 5 minutes, and hit enter when prompted about 5 minutes in (programming dependencies installation)
 Sync time is around 2 hours
 Check MN 1
-genesisx-cli -datadir=/home/genesisx/.genesisx mnsync status
+bitcoingenx-cli -datadir=/home/bitcoingenx/.bitcoingenx mnsync status
 Check MN 2
-genesisx-cli -datadir=/home/genesisx2/.genesisx mnsync status
+bitcoingenx-cli -datadir=/home/bitcoingenx2/.bitcoingenx mnsync status
 Check MN 3
-genesisx-cli -datadir=/home/genesisx3/.genesisx mnsync status
+bitcoingenx-cli -datadir=/home/bitcoingenx3/.bitcoingenx mnsync status
 Check MN 4
-genesisx-cli -datadir=/home/genesisx4/.genesisx mnsync status
+bitcoingenx-cli -datadir=/home/bitcoingenx4/.bitcoingenx mnsync status
 
 **********  Full Set Up **********
 
@@ -49,7 +49,7 @@ Wait for each transaction to have 6 confirmations.
 Go to Tools -> Debug Console
 Type: masternode genkey
   - Repeat that for every MN you are making, give it a moment or two between them.
-  
+
 Type: masternode outputs
    -Match up the Genkey to the TX ID earlier and copy the the TX IDs (First set of numbers) and Index Numbers (Either 1 or a 0, after TX ID) to the notepad file.
 
@@ -114,13 +114,13 @@ genesisx-cli -datadir=/home/genesisx2/.genesisx masternode status
 To Check MN 3
 genesisx-cli -datadir=/home/genesisx3/.genesisx masternode status
 To Check MN 4
-genesisx-cli -datadir=/home/genesisx4/.genesisx masternode status
+genesisx-cli -datadir=/home/bitcoingenx4/.bitcoingenx masternode status
 
 Need help? Have a suggestion? Have a request?
 Find Sburns1369#1584 on Discord - https://discord.gg/YhJ8v3g
 Website will hopefully by up early March 2019
 
 Tips are always appreciated
-GenesisX address: GZXonqnH2cjPgQZL59urDZS2CBzxPzoQ1j - Not BGX
+bitcoingenx address: BoEsUmcS3D9gVmdxvj7Che4wD1SAHa2zG9
 LTC address: MUdDdVr4Az1dVw47uC4srJ31Ksi5SNkC7H
 BTC address: 32FzghE1yUZRdDmCkj3bJ6vJyXxUVPKY93
