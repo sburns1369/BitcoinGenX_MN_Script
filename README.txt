@@ -14,7 +14,7 @@ Shameless Referral link = https://www.vultr.com/?ref=7846384
 
 Copy and Paste:
 
-bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/GenesisX_MN_Script/master/xgs.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/bgx.sh)
 
 Hit "y" to start when prompted enter masternode private key(s)
 Wait about 5 minutes, and hit enter when prompted about 5 minutes in (programming dependencies installation)
