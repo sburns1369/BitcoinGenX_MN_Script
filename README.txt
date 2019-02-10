@@ -1,14 +1,10 @@
 # BitcoinGenX_MN_Script
+
 1 to 4 Masternode Installation Script for BitcoinGenX
-
-BitcoinGenX
-
-# bitcoingenx_MN_Script
-Installation Script for Installing up to 4 GenesisX Masternodes (XGS Version 1.4.0)
 
 This script is for use on fresh installations of Ubuntu 16.04 x64 only; or Ubuntu 16.04 x64 installations that were installed by other Sburns/NullEntry (Github = https://github.com/sburns1369).  All scripts where tested on a Vultr VPS
 
-Shameless Referral link = https://www.vultr.com/?ref=7846384
+Shameless Referral link for VPS = https://www.vultr.com/?ref=7846384 = All instances built and tested on VULT $3.5 or $5/monthly servers.
 
 *********  Quick Start - Experienced Users ***************
 
@@ -58,7 +54,7 @@ Save these with a notepad
 Connect to your Linux VPS as root
 
 Copy and Paste the command below
-bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/GenesisX_MN_Script/master/xgs.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/bgx.sh)
 
 Follow on Screen Directions
 (The Masternode Private keys should be in the notepad file from earlier, enter those when prompted)
@@ -91,13 +87,13 @@ If they do not appear, double check your work in the masternode.conf
 go back to your VPS and occasionally check the Masternodes Sync'ing status with the commands...
 
 To Check MN 1
-genesisx-cli -datadir=/home/genesisx/.genesisx mnsync status
+bitcoingenx-cli -datadir=/home/bitcoingenx/.bitcoingenx mnsync status
 To Check MN 2
-genesisx-cli -datadir=/home/genesisx2/.genesisx mnsync status
+bitcoingenx-cli -datadir=/home/bitcoingenx2/.bitcoingenx mnsync status
 To Check MN 3
-genesisx-cli -datadir=/home/genesisx3/.genesisx mnsync status
+bitcoingenx-cli -datadir=/home/bitcoingenx3/.bitcoingenx mnsync status
 To Check MN 4
-genesisx-cli -datadir=/home/genesisx4/.genesisx mnsync status
+bitcoingenx-cli -datadir=/home/bitcoingenx4/.bitcoingenx mnsync status
 
 We are watching for the "IsBlockchainSynced" to equals true, not false.
 This will take some time, relax.
@@ -108,23 +104,19 @@ It may take around another 15 to 20 minutes, or even instantly to activate the M
 You can check the status of your masternodes with the commands below
 
 To Check MN 1
-genesisx-cli -datadir=/home/genesisx/.genesisx masternode status
+bitcoingenx-cli -datadir=/home/bitcoingenx/.bitcoingenx masternode status
 To Check MN 2
-genesisx-cli -datadir=/home/genesisx2/.genesisx masternode status
+bitcoingenx-cli -datadir=/home/bitcoingenx2/.bitcoingenx masternode status
 To Check MN 3
-genesisx-cli -datadir=/home/genesisx3/.genesisx masternode status
+bitcoingenx-cli -datadir=/home/bitcoingenx3/.bitcoingenx masternode status
 To Check MN 4
-genesisx-cli -datadir=/home/bitcoingenx4/.bitcoingenx masternode status
+bitcoingenx-cli -datadir=/home/bitcoingenx4/.bitcoingenx masternode status
 
 Need help? Have a suggestion? Have a request?
 Find Sburns1369#1584 on Discord - https://discord.gg/YhJ8v3g
 Website will hopefully by up early March 2019
 
 Tips are always appreciated
-<<<<<<< HEAD
-bitcoingenx address: BoEsUmcS3D9gVmdxvj7Che4wD1SAHa2zG9
-=======
-GenesisX address: BoEsUmcS3D9gVmdxvj7Che4wD1SAHa2zG9 - Not BGX
->>>>>>> 61396057b421ab40cbd899075fa02e27b8449761
+BitcoinGenX address: BoEsUmcS3D9gVmdxvj7Che4wD1SAHa2zG9
 LTC address: MUdDdVr4Az1dVw47uC4srJ31Ksi5SNkC7H
 BTC address: 32FzghE1yUZRdDmCkj3bJ6vJyXxUVPKY93
