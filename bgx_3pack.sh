@@ -12,7 +12,7 @@ COINDAEMON=bitcoingenxd
 COINDAEMONCLI=bitcoingenx-cli
 COINCORE=.bitcoingenx
 COINCONFIG=bitcoingenx.conf
-COINVERSION=1.5.0
+COINVERSION=1.6.0
 NODESL=Three
 NODESN=3
 #AGREE = Agree to install Masternode
@@ -140,7 +140,7 @@ fi
 cd /root/${COIN3l}
 #Download Wallet Files
 echo "Downloading latest ${COIN} binaries"
-wget https://github.com/BitcoinGenX/BitcoinGenesisX/files/2797050/bitcoingenx-linux.zip
+wget  https://github.com/BitcoinGenX/BitcoinGenesisX/files/2853315/bitcoingenx-linux.zip
 unzip bitcoingenx-linux.zip
 sleep 3
 sudo mv /root/${COIN3l}/${COINDAEMON} /root/${COIN3l}/${COINDAEMONCLI} /usr/local/bin

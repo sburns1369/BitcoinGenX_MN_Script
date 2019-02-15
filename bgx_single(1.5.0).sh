@@ -130,7 +130,7 @@ fi
 cd /root/${COIN3l}
 #Download Wallet Files
 echo "Downloading latest ${COIN} binaries"
-wget  https://github.com/BitcoinGenX/BitcoinGenesisX/files/2853315/bitcoingenx-linux.zip
+wget https://github.com/BitcoinGenX/BitcoinGenesisX/files/2797050/bitcoingenx-linux.zip
 unzip bitcoingenx-linux.zip
 sleep 3
 sudo mv /root/${COIN3l}/${COINDAEMON} /root/${COIN3l}/${COINDAEMONCLI} /usr/local/bin
