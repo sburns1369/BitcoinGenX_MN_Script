@@ -101,10 +101,6 @@ ${COINDAEMON} -datadir=/home/${COINl}3/.${COINl} -daemon
 sleep 5
 # Fourth Node Configuration and launch
 # Inserting Version to nullentrydev files
-if [[ $NULLREC = "y" ]] ; then
-  echo "walletVersion4 : $COINVERSION" >> /usr/local/nullentrydev/${COIN3l}.log
-  echo "scriptVersion4 : $SCRIPTVERSION" >> /usr/local/nullentrydev/${COIN3l}.log
-fi
 sleep 5
 echo
 echo -e ${BOLD}"All ${NODESN} ${COIN3} Nodes Re-launched, please wait for it to sync".${CLEAR}

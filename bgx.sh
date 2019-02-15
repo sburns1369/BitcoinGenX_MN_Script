@@ -29,6 +29,7 @@ echo -e ${GREEN} "Press y for yes, and n for no followed by [ENTER]:"${CLEAR}
 read AGREE
 if [[ $AGREE =~ "y" ]] ; then
 echo -e ${GREEN}"Please enter the number (1-4) of $COIN Masternode(s)"${CLEAR}
+echo -e ${GREEN}"Or press u to upgrade existing $COIN Masternode(s)"${CLEAR}
 echo -e ${GREEN}"you would like to install :"${CLEAR}
 read NUMBER
 case $NUMBER in
@@ -36,6 +37,7 @@ case $NUMBER in
   2)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_2pack.sh);;
   3)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_3pack.sh);;
   4)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_4pack.sh);;
+  u)echo -e "Go Update Menu" ;;
   *)echo -e ${RED}"Invalid Option - Exiting Setup - Re-run to try again"${CLEAR};;
 esac
 else
