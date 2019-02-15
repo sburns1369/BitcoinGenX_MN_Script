@@ -14,7 +14,7 @@ COINDAEMONCLI=bitcoingenx-cli
 COINCORE=.bitcoingenx
 COINCONFIG=bitcoingenx.conf
 COINVERSION=1.6.0
-NODESL=Four
+NODESL=Three
 NODESN=3
 #AGREE = Agree to install Masternode
 #NULLREC = Agree to Record nullentrydev information
@@ -44,9 +44,9 @@ echo
 cd ~
 cd /usr/local/bin
 #Stop and kill old core
-${COINDAEMONCLI} -/home/${COINl}/.${COINl} stop
-${COINDAEMONCLI} -/home/${COINl}2/.${COINl} stop
-${COINDAEMONCLI} -/home/${COINl}3/.${COINl} stop
+${COINDAEMONCLI} -datadir=/home/${COINl}/.${COINl} stop
+${COINDAEMONCLI} -datadir=/home/${COINl}2/.${COINl} stop
+${COINDAEMONCLI} -datadir=/home/${COINl}3/.${COINl} stop
 sleep 2
     rm ${COINDAEMON}
     rm ${COINDAEMONCLI}
