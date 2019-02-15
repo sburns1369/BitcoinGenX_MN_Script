@@ -44,7 +44,7 @@ echo
 cd ~
 cd /usr/local/bin
 #Stop and kill old core
-${COINDAEMONCLI} -/home/${COINl}/.${COINl} stop
+${COINDAEMONCLI} -datadir=/home/${COINl}/.${COINl} stop
 sleep 2
     rm ${COINDAEMON}
     rm ${COINDAEMONCLI}
