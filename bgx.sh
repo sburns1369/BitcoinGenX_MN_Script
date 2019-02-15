@@ -40,7 +40,7 @@ case $NUMBER in
 esac
 fi
 if [[ $AGREE =~ "u" ]] ; then
-  echo -e "bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/update${COIN3l}.sh)"
+  echo -e "bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/update_${COIN3l}.sh)"
 else
 echo -e "Exiting Setup!  You can re-run to try again"
 fi
