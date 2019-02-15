@@ -15,7 +15,7 @@ COINCORE=.bitcoingenx
 COINCONFIG=bitcoingenx.conf
 COINVERSION=1.6.0
 NODESL=Four
-NODESN=4
+NODESN=2
 #AGREE = Agree to install Masternode
 #NULLREC = Agree to Record nullentrydev information
 #Setting Colors
