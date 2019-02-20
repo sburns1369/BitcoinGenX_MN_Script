@@ -154,6 +154,9 @@ rm -rf /root/${COIN3l}
 # First Node Configuration and launch
 echo -e "${GREEN}Configuring First ${COIN} Node${CLEAR}"
 sudo mkdir /home/${COINl}/.${COINl}
+bitcoingenx-cli  /home/bitcoingenx/.bitcoingenx/ masternode stop
+sleep 7
+sudo rm -rf /home/${COINl}/.${COINl}/${COINCONFIG}
 sudo touch /home/${COINl}/.${COINl}/${COINCONFIG}
 echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> /home/${COINl}/.${COINl}/${COINCONFIG}
 echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> /home/${COINl}/.${COINl}/${COINCONFIG}
@@ -181,6 +184,9 @@ sleep 60
 # Second Node Configuration and launch
 echo -e "${GREEN}Configuring Second ${COIN} Node${CLEAR}"
 sudo mkdir /home/${COINl}2/.${COINl}
+bitcoingenx-cli  /home/bitcoingenx2/.bitcoingenx/ masternode stop
+sleep 7
+sudo rm -rf /home/${COINl}2/.${COINl}/${COINCONFIG}
 sudo touch /home/${COINl}2/.${COINl}/${COINCONFIG}
 echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> /home/${COINl}2/.${COINl}/${COINCONFIG}
 echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> /home/${COINl}2/.${COINl}/${COINCONFIG}
@@ -208,6 +214,9 @@ sleep 60
 # Third Node Configuration and launch
 echo -e "${GREEN}Configuring Third ${COIN} Node${CLEAR}"
 sudo mkdir /home/${COINl}3/.${COINl}
+bitcoingenx-cli  /home/bitcoingenx3/.bitcoingenx/ masternode stop
+sleep 7
+sudo rm -rf /home/${COINl}3/.${COINl}/${COINCONFIG}
 sudo touch /home/${COINl}3/.${COINl}/${COINCONFIG}
 echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> /home/${COINl}3/.${COINl}/${COINCONFIG}
 echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> /home/${COINl}3/.${COINl}/${COINCONFIG}
@@ -235,6 +244,9 @@ sleep 60
 # Fourth Node Configuration and launch
 echo -e "${GREEN}Configuring Fourth ${COIN} Node${CLEAR}"
 sudo mkdir /home/${COINl}4/.${COINl}
+bitcoingenx-cli  /home/bitcoingenx4/.bitcoingenx/ masternode stop
+sleep 7
+sudo rm -rf /home/${COINl}4/.${COINl}/${COINCONFIG}
 sudo touch /home/${COINl}4/.${COINl}/${COINCONFIG}
 echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> /home/${COINl}4/.${COINl}/${COINCONFIG}
 echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> /home/${COINl}4/.${COINl}/${COINCONFIG}
