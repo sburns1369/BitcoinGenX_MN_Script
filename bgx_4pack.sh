@@ -154,7 +154,7 @@ rm -rf /root/${COIN3l}
 # First Node Configuration and launch
 echo -e "${GREEN}Configuring First ${COIN} Node${CLEAR}"
 sudo mkdir /home/${COINl}/.${COINl}
-bitcoingenx-cli  /home/bitcoingenx/.bitcoingenx/ masternode stop
+bitcoingenx-cli  -datadir=/home/bitcoingenx/.bitcoingenx/ masternode stop
 sleep 7
 sudo rm -rf /home/${COINl}/.${COINl}/${COINCONFIG}
 sudo touch /home/${COINl}/.${COINl}/${COINCONFIG}
@@ -180,11 +180,11 @@ echo
 # Starting First Masternode daemon
 echo -e ${BOLD}"Launching First ${COIN3} Node"${CLEAR}
 ${COINDAEMON} -datadir=/home/${COINl}/.${COINl} -daemon
-sleep 60
+sleep 20
 # Second Node Configuration and launch
 echo -e "${GREEN}Configuring Second ${COIN} Node${CLEAR}"
 sudo mkdir /home/${COINl}2/.${COINl}
-bitcoingenx-cli  /home/bitcoingenx2/.bitcoingenx/ masternode stop
+bitcoingenx-cli  -datadir=/home/bitcoingenx2/.bitcoingenx/ masternode stop
 sleep 7
 sudo rm -rf /home/${COINl}2/.${COINl}/${COINCONFIG}
 sudo touch /home/${COINl}2/.${COINl}/${COINCONFIG}
@@ -210,11 +210,11 @@ echo
 # Starting Second Masternode daemon
 echo -e ${BOLD}"Launching Second ${COIN3} Node"${CLEAR}
 ${COINDAEMON} -datadir=/home/${COINl}2/.${COINl} -daemon
-sleep 60
+sleep 20
 # Third Node Configuration and launch
 echo -e "${GREEN}Configuring Third ${COIN} Node${CLEAR}"
 sudo mkdir /home/${COINl}3/.${COINl}
-bitcoingenx-cli  /home/bitcoingenx3/.bitcoingenx/ masternode stop
+bitcoingenx-cli  -datadir=/home/bitcoingenx3/.bitcoingenx/ masternode stop
 sleep 7
 sudo rm -rf /home/${COINl}3/.${COINl}/${COINCONFIG}
 sudo touch /home/${COINl}3/.${COINl}/${COINCONFIG}
@@ -240,12 +240,12 @@ echo
 # Starting Third Masternode daemon
 echo -e ${BOLD}"Launching Third ${COIN3} Node"${CLEAR}
 ${COINDAEMON} -datadir=/home/${COINl}3/.${COINl} -daemon
-sleep 60
+sleep 20
 # Fourth Node Configuration and launch
 echo -e "${GREEN}Configuring Fourth ${COIN} Node${CLEAR}"
 sudo mkdir /home/${COINl}4/.${COINl}
-bitcoingenx-cli  /home/bitcoingenx4/.bitcoingenx/ masternode stop
-sleep 7
+bitcoingenx-cli  -datadir=/home/bitcoingenx4/.bitcoingenx/ masternode stop
+sleep 10
 sudo rm -rf /home/${COINl}4/.${COINl}/${COINCONFIG}
 sudo touch /home/${COINl}4/.${COINl}/${COINCONFIG}
 echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> /home/${COINl}4/.${COINl}/${COINCONFIG}
