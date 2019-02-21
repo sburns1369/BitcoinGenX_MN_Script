@@ -48,7 +48,7 @@ echo -e ${GREEN} "Press y for yes, and u for upgrade by [ENTER]:"${CLEAR}
 read AGREE
 if [[ $AGREE =~ "y" ]] ; then
 echo -e ${GREEN}"Please enter the number (1-2) of $COIN Masternode(s)"${CLEAR}
-ehco -e "3 and 4 packs testing a patch - if successfull they will be released 2/22"
+echo -e "3 and 4 packs testing a patch - if successfull they will be released 2/22"
 echo -e ${GREEN}"you would like to install :"${CLEAR}
 read NUMBER
 case $NUMBER in
