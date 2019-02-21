@@ -48,7 +48,7 @@ echo -e ${GREEN} "Press y for yes, and u for upgrade by [ENTER]:"${CLEAR}
 read AGREE
 if [[ $AGREE =~ "y" ]] ; then
 echo -e ${GREEN}"Please enter the number (1-2) of $COIN Masternode(s)"${CLEAR}
-ehco -e "3 and 4 packs are under review till further testing"
+ehco -e "3 and 4 packs testing a patch - if successfull they will be released 2/22"
 echo -e ${GREEN}"you would like to install :"${CLEAR}
 read NUMBER
 case $NUMBER in
@@ -56,6 +56,7 @@ case $NUMBER in
   2)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_2pack.sh);;
   #3)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_3pack.sh);;
   #4)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_4pack.sh);;
+  8)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_8pack.sh);;
   *)echo -e ${RED}"Invalid Option - Exiting Setup - Re-run to try again"${CLEAR};;
 esac
 fi
