@@ -115,7 +115,7 @@ if [[ $NULLREC = "y" ]] ; then
     echo "Found /usr/local/nullentrydev/mnodes.log"
   fi
 fi
-echo ${RED}"Updating Apps"${CLEAR}
+echo -e ${RED}"Updating Apps"${CLEAR}
 sudo apt-get -y update
 sudo apt-get -y upgrade
 if grep -Fxq "dependenciesInstalled: true" /usr/local/nullentrydev/mnodes.log
@@ -132,7 +132,7 @@ else
   sudo apt-get -y install libevent-dev
   sudo apt-get -y install libboost-all-dev
   sudo apt-get -y install pkg-config
-  echo -e ${RED}"Press ENTER when prompted"${CLEAR}
+  echo -e ${RED}"Press ENTER if prompted"${CLEAR}
   sudo add-apt-repository -yu ppa:bitcoin/bitcoin
   sudo apt-get update
   sudo apt-get -y install libdb4.8-dev
@@ -296,10 +296,10 @@ sudo mkdir /home/${COINl}5/.${COINl}
 sudo touch /home/${COINl}5/${COINCONFIG}
 echo "rpcuser=user"`shuf -i 100000-9999999 -n 1` >> /home/${COINl}5/${COINCONFIG}
 echo "rpcpassword=pass"`shuf -i 100000-9999999 -n 1` >> /home/${COINl}5/${COINCONFIG}
-echo "rpcallowip=127.0.0.1" >> /home/${COINl}4/${COINCONFIG}
+echo "rpcallowip=127.0.0.1" >> /home/${COINl}5/${COINCONFIG}
 echo "server=1" >> /home/${COINl}5/${COINCONFIG}
 echo "daemon=1" >> /home/${COINl}5/${COINCONFIG}
-echo "maxconnections=250" >> /home/${COINl}4/${COINCONFIG}
+echo "maxconnections=250" >> /home/${COINl}5/${COINCONFIG}
 echo "masternode=1" >> /home/${COINl}5/${COINCONFIG}
 echo "rpcport=${COINRPCPORT5}" >> /home/${COINl}5/${COINCONFIG}
 echo "listen=0" >> /home/${COINl}5/${COINCONFIG}

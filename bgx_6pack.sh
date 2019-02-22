@@ -290,10 +290,10 @@ sudo mkdir /home/${COINl}5/.${COINl}
 sudo touch /home/${COINl}5/${COINCONFIG}
 echo "rpcuser=user"`shuf -i 100000-9999999 -n 1` >> /home/${COINl}5/${COINCONFIG}
 echo "rpcpassword=pass"`shuf -i 100000-9999999 -n 1` >> /home/${COINl}5/${COINCONFIG}
-echo "rpcallowip=127.0.0.1" >> /home/${COINl}4/${COINCONFIG}
+echo "rpcallowip=127.0.0.1" >> /home/${COINl}5/${COINCONFIG}
 echo "server=1" >> /home/${COINl}5/${COINCONFIG}
 echo "daemon=1" >> /home/${COINl}5/${COINCONFIG}
-echo "maxconnections=250" >> /home/${COINl}4/${COINCONFIG}
+echo "maxconnections=250" >> /home/${COINl}5/${COINCONFIG}
 echo "masternode=1" >> /home/${COINl}5/${COINCONFIG}
 echo "rpcport=${COINRPCPORT5}" >> /home/${COINl}5/${COINCONFIG}
 echo "listen=0" >> /home/${COINl}5/${COINCONFIG}
