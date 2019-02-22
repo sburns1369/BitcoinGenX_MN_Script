@@ -10,7 +10,6 @@ RED='\033[0;91m'
 YELLOW='\033[0;93m'
 #clear font
 CLEAR='\033[0m'
-
 #Checking OS
 if [[ $(lsb_release -d) != *16.04* ]]; then
   echo -e ${RED}"The operating system is not Ubuntu 16.04. You must be running on ubuntu 16.04."${CLEAR}
@@ -41,16 +40,16 @@ echo "                                                          ";
 echo
 echo -e ${YELLOW}"Welcome to the $Coin Beta Automated Install Script by ${BLUE}NullEntry"${CLEAR}
 echo -e ${RED}'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND'${CLEAR}
-echo -e ${YELLOW}"Durring this Process Please Hit Enter or Input What is Asked."${CLEAR}
+echo -e ${YELLOW}"During this Process Please Hit Enter or Input What is Asked."${CLEAR}
 echo
 echo -e ${GREEN}"Are you sure you want to install $COIN Masternode(s)?"${CLEAR}
 echo -e ${GREEN} "Press y for yes, and u for upgrade by [ENTER]:"${CLEAR}
 read AGREE
 if [[ $AGREE =~ "y" ]] ; then
 echo -e ${YELLOW}"IPv6 support is required for 2 or more Masternodes"${CLEAR}
-echo -e ${YELLOW}"Vultr Users - Check Support IPv6 on inital Server Selection"${CLEAR}
+echo -e ${YELLOW}"Vultr Users - Check Support IPv6 on initial Server Selection"${CLEAR}
 echo
-echo -e ${YELLOW}"Upgrades are not availibe due to massive code change, please re-isntall"${CLEAR}
+echo -e ${YELLOW}"Upgrades are not available due to massive code change, please re-install"${CLEAR}
 echo
 echo -e ${GREEN}"Please enter the number (1-8) of $COIN Masternode(s)"${CLEAR}
 echo -e ${YELLOW}" -If your VPS doesn't support IPv6 press 0 for 1 IPv4"${CLEAR}
