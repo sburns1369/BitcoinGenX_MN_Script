@@ -416,7 +416,7 @@ echo "maxconnections=250" >> /home/${COINl}8/${COINCONFIG}
 echo "masternode=1" >> /home/${COINl}8/${COINCONFIG}
 echo "rpcport=${COINRPCPORT8}" >> /home/${COINl}8/${COINCONFIG}
 echo "listen=0" >> /home/${COINl}8/${COINCONFIG}
-echo "externalip=[${MNIP4}]:$COINPORT" >> /home/${COINl}8/${COINCONFIG}
+echo "externalip=[${MNIP8}]:$COINPORT" >> /home/${COINl}8/${COINCONFIG}
 echo "masternodeprivkey=$privkey8" >> /home/${COINl}8/${COINCONFIG}
 # Inserting Version to nullentrydev files
 if [[ $NULLREC = "y" ]] ; then
