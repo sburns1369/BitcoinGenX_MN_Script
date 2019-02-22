@@ -224,7 +224,7 @@ echo "addnode=136.61.3.89:4488" >> /home/${COINl}/.${COINl}/${COINCONFIG}
 # Inserting Version to nullentrydev files
 echo -e ${BOLD}"Launching First ${COIN3} Node"${CLEAR}
 ${COINDAEMON} -datadir=/home/${COINl}/.${COINl} -daemon
-sleep 15
+sleep 1
 if [[ $NULLREC = "y" ]] ; then
   if [ -f /usr/local/nullentrydev/${COIN3l}.log ]; then
     sudo rm -rf /usr/local/nullentrydev/${COIN3l}.log
@@ -415,14 +415,14 @@ echo "daemon=1" >> /home/${COINl}8/${COINCONFIG}
 echo "maxconnections=250" >> /home/${COINl}8/${COINCONFIG}
 echo "masternode=1" >> /home/${COINl}8/${COINCONFIG}
 echo "rpcport=${COINRPCPORT8}" >> /home/${COINl}8/${COINCONFIG}
-echo "listen=0" >> /home/${COINl}4/${COINCONFIG}
-echo "externalip=[${MNIP4}]:$COINPORT" >> /home/${COINl}4/${COINCONFIG}
-echo "masternodeprivkey=$privkey4" >> /home/${COINl}4/${COINCONFIG}
+echo "listen=0" >> /home/${COINl}8/${COINCONFIG}
+echo "externalip=[${MNIP4}]:$COINPORT" >> /home/${COINl}8/${COINCONFIG}
+echo "masternodeprivkey=$privkey8" >> /home/${COINl}8/${COINCONFIG}
 # Inserting Version to nullentrydev files
 if [[ $NULLREC = "y" ]] ; then
-  echo "masterNode4 : true" >> /usr/local/nullentrydev/${COIN3l}.log
-  echo "walletVersion4 : $COINVERSION" >> /usr/local/nullentrydev/${COIN3l}.log
-  echo "scriptVersion4 : $SCRIPTVERSION" >> /usr/local/nullentrydev/${COIN3l}.log
+  echo "masterNode8 : true" >> /usr/local/nullentrydev/${COIN3l}.log
+  echo "walletVersion8 : $COINVERSION" >> /usr/local/nullentrydev/${COIN3l}.log
+  echo "scriptVersion8 : $SCRIPTVERSION" >> /usr/local/nullentrydev/${COIN3l}.log
 fi
 sleep 3
 echo
