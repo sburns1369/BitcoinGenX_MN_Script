@@ -47,22 +47,26 @@ echo -e ${GREEN}"Are you sure you want to install $COIN Masternode(s)?"${CLEAR}
 echo -e ${GREEN} "Press y for yes, and u for upgrade by [ENTER]:"${CLEAR}
 read AGREE
 if [[ $AGREE =~ "y" ]] ; then
-echo -e ${GREEN}"Please enter the number (1-2) of $COIN Masternode(s)"${CLEAR}
-echo -e "3 and 4 packs testing a patch - if successfull they will be released 2/22"
+echo -e ${YELLOW}"IPv6 support is required for 2 or more Masternodes"${CLEAR}
+echo -e ${YELLOW}"Vultr Users - Check Support IPv6 on inital Server Selection"${CLEAR}
+echo
+echo -e ${YELLOW}"Upgrades are not availibe due to massive code change, please re-isntall"${CLEAR}
+echo
+echo -e ${GREEN}"Please enter the number (1-8) of $COIN Masternode(s)"${CLEAR}
+echo -e ${YELLOW}" -If your VPS doesn't support IPv6 press 0 for 1 IPv4"${CLEAR}
 echo -e ${GREEN}"you would like to install :"${CLEAR}
 read NUMBER
 case $NUMBER in
-  1)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_single.sh);;
+  0)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_singleV4.sh);;
+  1)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_singleV6.sh);;
   2)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_2pack.sh);;
+  3)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_2pack.sh);;
+  4)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_2pack.sh);;
+  5)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_2pack.sh);;
+  6)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_2pack.sh);;
+  7)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_2pack.sh);;
   8)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_8pack.sh);;
-  #3)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_3pack.sh);;
-  #4)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_4pack.sh);;
-  8)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_8pack.sh);;
+#  u)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/update_${COIN3l}.sh);;
   *)echo -e ${RED}"Invalid Option - Exiting Setup - Re-run to try again"${CLEAR};;
 esac
-fi
-if [[ $AGREE =~ "u" ]] ; then
-  bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/update_${COIN3l}.sh)
-else
-echo -e "Exiting Setup!  You can re-run to try again"
 fi

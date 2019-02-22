@@ -11,15 +11,13 @@ COINRPCPORT3=19024
 COINRPCPORT4=19025
 COINRPCPORT5=19026
 COINRPCPORT6=19027
-COINRPCPORT7=19028
-COINRPCPORT8=19029
 COINDAEMON=bitcoingenxd
 COINDAEMONCLI=bitcoingenx-cli
 COINCORE=.bitcoingenx
 COINCONFIG=bitcoingenx.conf
 COINVERSION=1.6.0
-NODESL=Eight
-NODESN=8
+NODESL=Six
+NODESN=6
 BLUE='\033[0;36m'
 GREEN='\033[0;92m'
 RED='\033[0;91m'
@@ -78,12 +76,6 @@ echo
 echo -e ${GREEN}"Please Enter Your Six Masternode Private Key:"${CLEAR}
 read privkey6
 echo
-echo -e ${GREEN}"Please Enter Your Seven Masternode Private Key:"${CLEAR}
-read privkey7
-echo
-echo -e ${GREEN}"Please Enter Your Eight Masternode Private Key:"${CLEAR}
-read privkey8
-echo
 echo "Creating ${NODESN} ${COIN} system users with no-login access:"
 sudo adduser --system --home /home/${COINl} ${COINl}
 sudo adduser --system --home /home/${COINl}2 ${COINl}2
@@ -91,8 +83,6 @@ sudo adduser --system --home /home/${COINl}3 ${COINl}3
 sudo adduser --system --home /home/${COINl}4 ${COINl}4
 sudo adduser --system --home /home/${COINl}5 ${COINl}5
 sudo adduser --system --home /home/${COINl}6 ${COINl}6
-sudo adduser --system --home /home/${COINl}7 ${COINl}7
-sudo adduser --system --home /home/${COINl}8 ${COINl}8
 cd ~
 if [[ $NULLREC = "y" ]] ; then
   if [ ! -d /usr/local/nullentrydev/ ]; then
@@ -160,8 +150,6 @@ else
     MNIP4=$(sed -n '6p' < ip.tmp)
     MNIP5=$(sed -n '7p' < ip.tmp)
     MNIP6=$(sed -n '8p' < ip.tmp)
-    MNIP7=$(sed -n '9p' < ip.tmp)
-    MNIP8=$(sed -n '10p' < ip.tmp)
     if [[ $NULLREC = "y" ]] ; then
       sudo echo "ipv6: true" >> /usr/local/nullentrydev/mnodes.log
       sudo touch /usr/local/nullentrydev/iptable.log
@@ -344,57 +332,6 @@ sleep 3
 echo
 echo -e ${BOLD}"Sixth ${COIN3} Node Staged for launch"${CLEAR}
 sleep 3
-sleep 7
-echo
-echo -e "${GREEN}Configuring Seventh ${COIN} Node${CLEAR}"
-sudo mkdir /home/${COINl}7/.${COINl}
-sudo touch /home/${COINl}7/${COINCONFIG}
-echo "rpcuser=user"`shuf -i 100000-9999999 -n 1` >> /home/${COINl}7/${COINCONFIG}
-echo "rpcpassword=pass"`shuf -i 100000-9999999 -n 1` >> /home/${COINl}7/${COINCONFIG}
-echo "rpcallowip=127.0.0.1" >> /home/${COINl}7/${COINCONFIG}
-echo "server=1" >> /home/${COINl}7/${COINCONFIG}
-echo "daemon=1" >> /home/${COINl}7/${COINCONFIG}
-echo "maxconnections=250" >> /home/${COINl}7/${COINCONFIG}
-echo "masternode=1" >> /home/${COINl}7/${COINCONFIG}
-echo "rpcport=${COINRPCPORT7}" >> /home/${COINl}7/${COINCONFIG}
-echo "listen=0" >> /home/${COINl}7/${COINCONFIG}
-echo "externalip=[${MNIP7}]:$COINPORT" >> /home/${COINl}7/${COINCONFIG}
-echo "masternodeprivkey=$privkey7" >> /home/${COINl}7/${COINCONFIG}
-if [[ $NULLREC = "y" ]] ; then
-  echo "masterNode7 : true" >> /usr/local/nullentrydev/${COIN3l}.log
-  echo "walletVersion7 : $COINVERSION" >> /usr/local/nullentrydev/${COIN3l}.log
-  echo "scriptVersion7 : $SCRIPTVERSION" >> /usr/local/nullentrydev/${COIN3l}.log
-fi
-sleep 3
-echo
-echo -e ${BOLD}"Seventh ${COIN3} Node Staged for launch"${CLEAR}
-sleep 3
-sleep 5
-echo
-echo -e "${GREEN}Configuring Eighth ${COIN} Node${CLEAR}"
-sudo mkdir /home/${COINl}8/.${COINl}
-sudo touch /home/${COINl}8/${COINCONFIG}
-echo "rpcuser=user"`shuf -i 100000-9999999 -n 1` >> /home/${COINl}8/${COINCONFIG}
-echo "rpcpassword=pass"`shuf -i 100000-9999999 -n 1` >> /home/${COINl}8/${COINCONFIG}
-echo "rpcallowip=127.0.0.1" >> /home/${COINl}8/${COINCONFIG}
-echo "server=1" >> /home/${COINl}8/${COINCONFIG}
-echo "daemon=1" >> /home/${COINl}8/${COINCONFIG}
-echo "maxconnections=250" >> /home/${COINl}8/${COINCONFIG}
-echo "masternode=1" >> /home/${COINl}8/${COINCONFIG}
-echo "rpcport=${COINRPCPORT8}" >> /home/${COINl}8/${COINCONFIG}
-echo "listen=0" >> /home/${COINl}8/${COINCONFIG}
-echo "externalip=[${MNIP8}]:$COINPORT" >> /home/${COINl}8/${COINCONFIG}
-echo "masternodeprivkey=$privkey8" >> /home/${COINl}8/${COINCONFIG}
-if [[ $NULLREC = "y" ]] ; then
-  echo "masterNode8 : true" >> /usr/local/nullentrydev/${COIN3l}.log
-  echo "walletVersion8 : $COINVERSION" >> /usr/local/nullentrydev/${COIN3l}.log
-  echo "scriptVersion8 : $SCRIPTVERSION" >> /usr/local/nullentrydev/${COIN3l}.log
-fi
-sleep 3
-echo
-echo -e ${BOLD}"Eighth ${COIN3} Node Staged for launch"${CLEAR}
-sleep 3
-
 echo
 echo -e "${RED}This process can take a while!${CLEAR}"
 echo -e "${YELLOW}Waiting on First Masternode Block Chain to Synchronize${CLEAR}"
@@ -419,22 +356,16 @@ sudo cp -r /home/${COINl}/.${COINl}/* /home/${COINl}3/.${COINl}/
 sudo cp -r /home/${COINl}/.${COINl}/* /home/${COINl}4/.${COINl}/
 sudo cp -r /home/${COINl}/.${COINl}/* /home/${COINl}5/.${COINl}/
 sudo cp -r /home/${COINl}/.${COINl}/* /home/${COINl}6/.${COINl}/
-sudo cp -r /home/${COINl}/.${COINl}/* /home/${COINl}7/.${COINl}/
-sudo cp -r /home/${COINl}/.${COINl}/* /home/${COINl}8/.${COINl}/
 sudo rm /home/${COINl}2/.${COINl}/${COINCONFIG}
 sudo rm /home/${COINl}3/.${COINl}/${COINCONFIG}
 sudo rm /home/${COINl}4/.${COINl}/${COINCONFIG}
 sudo rm /home/${COINl}5/.${COINl}/${COINCONFIG}
 sudo rm /home/${COINl}6/.${COINl}/${COINCONFIG}
-sudo rm /home/${COINl}7/.${COINl}/${COINCONFIG}
-sudo rm /home/${COINl}8/.${COINl}/${COINCONFIG}
 sudo cp -r /home/${COINl}2/${COINCONFIG} /home/${COINl}2/.${COINl}/${COINCONFIG}
 sudo cp -r /home/${COINl}3/${COINCONFIG} /home/${COINl}3/.${COINl}/${COINCONFIG}
 sudo cp -r /home/${COINl}4/${COINCONFIG} /home/${COINl}4/.${COINl}/${COINCONFIG}
 sudo cp -r /home/${COINl}5/${COINCONFIG} /home/${COINl}5/.${COINl}/${COINCONFIG}
 sudo cp -r /home/${COINl}6/${COINCONFIG} /home/${COINl}6/.${COINl}/${COINCONFIG}
-sudo cp -r /home/${COINl}7/${COINCONFIG} /home/${COINl}7/.${COINl}/${COINCONFIG}
-sudo cp -r /home/${COINl}8/${COINCONFIG} /home/${COINl}8/.${COINl}/${COINCONFIG}
 sleep 5
 #Launch codes
 echo -e ${BOLD}"Re-Launching First ${COIN3} Node"${CLEAR}
@@ -461,14 +392,6 @@ echo -e ${BOLD}"Re-Launching Sixth ${COIN3} Node"${CLEAR}
 ${COINDAEMON} -datadir=/home/${COINl}6/.${COINl} -daemon
 echo
 sleep 5
-echo -e ${BOLD}"Re-Launching Seventh ${COIN3} Node"${CLEAR}
-${COINDAEMON} -datadir=/home/${COINl}7/.${COINl} -daemon
-echo
-sleep 5
-echo -e ${BOLD}"Re-Launching Eigth ${COIN3} Node"${CLEAR}
-${COINDAEMON} -datadir=/home/${COINl}8/.${COINl} -daemon
-echo
-sleep 5
 echo
 echo -e ${BOLD}"All ${NODESN} ${COIN3} Nodes Launched, please wait for it to sync".${CLEAR}
 echo
@@ -481,8 +404,6 @@ echo -e "${BOLD} Masternode_IP 3: [${MNIP3}]:${COINPORT}${CLEAR}"
 echo -e "${BOLD} Masternode_IP 4: [${MNIP4}]:${COINPORT}${CLEAR}"
 echo -e "${BOLD} Masternode_IP 5: [${MNIP5}]:${COINPORT}${CLEAR}"
 echo -e "${BOLD} Masternode_IP 6: [${MNIP6}]:${COINPORT}${CLEAR}"
-echo -e "${BOLD} Masternode_IP 7: [${MNIP7}]:${COINPORT}${CLEAR}"
-echo -e "${BOLD} Masternode_IP 8: [${MNIP8}]:${COINPORT}${CLEAR}"
 echo
 echo -e ${BOLD} "If you become disconnected, you can check the status of sync'ing with"${CLEAR}
 echo -e "${YELLOW}For ${COINDAEMONCLI} -datadir=/home/bitcoingenx/.bitcoingenx mnsync status"${CLEAR}
@@ -493,8 +414,6 @@ echo -e "${YELLOW}For mn3 ${COINDAEMONCLI} -datadir=/home/${COINl}3/.${COINl} ma
 echo -e "${YELLOW}For mn4 ${COINDAEMONCLI} -datadir=/home/${COINl}4/.${COINl} masternode status"${CLEAR}
 echo -e "${YELLOW}For mn5 ${COINDAEMONCLI} -datadir=/home/${COINl}5/.${COINl} masternode status"${CLEAR}
 echo -e "${YELLOW}For mn6 ${COINDAEMONCLI} -datadir=/home/${COINl}6/.${COINl} masternode status"${CLEAR}
-echo -e "${YELLOW}For mn7 ${COINDAEMONCLI} -datadir=/home/${COINl}7/.${COINl} masternode status"${CLEAR}
-echo -e "${YELLOW}For mn8 ${COINDAEMONCLI} -datadir=/home/${COINl}8/.${COINl} masternode status"${CLEAR}
 echo
 fi
 echo -e ${BLUE}" Your patronage is apprappreciated, tipping addresses"${CLEAR}
