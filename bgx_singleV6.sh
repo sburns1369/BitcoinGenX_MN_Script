@@ -26,7 +26,7 @@ if [[ $(lsb_release -d) != *16.04* ]]; then
 fi
 echo
 echo
-echo -e ${GREEN}"Are you sure you want to continue installation of a ${NODESL} ${COIN} Masternodes?"
+echo -e ${GREEN}"Are you sure you want to continue installation of a ${COIN} Masternodes?"
 echo -e "type y/n followed by [ENTER]:"${CLEAR}
 read AGREE
 if [[ $AGREE =~ "y" ]] ; then
@@ -191,7 +191,7 @@ until bitcoingenx-cli -datadir=/home/bitcoingenx/.bitcoingenx mnsync status | gr
     sleep 5
   done
 echo
-echo -e ${BOLD}"All ${NODESN} ${COIN3} Nodes Launched, please wait for it to sync".${CLEAR}
+echo -e ${BOLD}"A ${COIN3} Node Launched, please wait for it to sync".${CLEAR}
 echo -e "The data below needs to be in your local masternode configuration file:${CLEAR}"
 echo -e "${BOLD} Masternode_IP 1: [${MNIP1}]:${COINPORT}${CLEAR}"
 echo
