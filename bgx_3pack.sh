@@ -154,12 +154,16 @@ cd /root/${COIN3l}
 echo "Downloading latest ${COIN} binaries"
 wget  https://github.com/BitcoinGenX/BitcoinGenesisX/files/2896837/bitcoingenx-linux-static.zip
 unzip bitcoingenx-linux-static.zip
-sleep 3
+sleep 5
 sudo mv /root/${COIN3l}/${COINDAEMON} /root/${COIN3l}/${COINDAEMONCLI} /usr/local/bin
+sleep 1
 sudo chmod 755 -R  /usr/local/bin/${COINl}*
+sleep 1
 rm -rf /root/${COIN3l}
+sleep 1
 echo -e "${GREEN}Configuring First ${COIN} Node${CLEAR}"
 sudo mkdir /home/${COINl}/.${COINl}
+sleep 1
 sudo touch /home/${COINl}/.${COINl}/${COINCONFIG}
 echo "rpcuser=user"`shuf -i 100000-9999999 -n 1` >> /home/${COINl}/.${COINl}/${COINCONFIG}
 echo "rpcpassword=pass"`shuf -i 100000-9999999 -n 1` >> /home/${COINl}/.${COINl}/${COINCONFIG}
@@ -299,7 +303,7 @@ echo -e "${YELLOW}For mn2 ${COINDAEMONCLI} -datadir=/home/${COINl}2/.${COINl} ma
 echo -e "${YELLOW}For mn3 ${COINDAEMONCLI} -datadir=/home/${COINl}3/.${COINl} masternode status"${CLEAR}
 echo
 fi
-echo -e ${BLUE}" Your patronage is apprappreciated, tipping addresses"${CLEAR}
+echo -e ${BLUE}" Your patronage is appreciated, tipping addresses"${CLEAR}
 echo -e ${BLUE}" ${COIN} address: BoEsUmcS3D9gVmdxvj7Che4wD1SAHa2zG9"${CLEAR}
 echo -e ${BLUE}" LTC address: MUdDdVr4Az1dVw47uC4srJ31Ksi5SNkC7H"${CLEAR}
 echo -e ${BLUE}" BTC address: 32FzghE1yUZRdDmCkj3bJ6vJyXxUVPKY93"${CLEAR}
