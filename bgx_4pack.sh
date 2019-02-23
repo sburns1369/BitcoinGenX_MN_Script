@@ -13,7 +13,7 @@ COINDAEMON=bitcoingenxd
 COINDAEMONCLI=bitcoingenx-cli
 COINCORE=.bitcoingenx
 COINCONFIG=bitcoingenx.conf
-COINVERSION=1.6.0
+COINVERSION=1.6.1
 NODESL=Four
 NODESN=4
 BLUE='\033[0;36m'
@@ -148,7 +148,7 @@ else
 cd /var
 sudo touch swap.img
 sudo chmod 600 swap.img
-echo -e ${YELLOW} "You should check out https://youtu.be/l9nh1l8ZIJQ"${CLEAR}
+echo -e ${YELLOW} "You should check out https://www.youtube.com/watch?v=lIuEuJvKos4"${CLEAR}
 sudo dd if=/dev/zero of=/var/swap.img bs=1024k count=4096
 sudo mkswap /var/swap.img
 sudo swapon /var/swap.img
@@ -158,7 +158,7 @@ if [ ! -d /root/${COIN3l} ]; then
 fi
 cd /root/${COIN3l}
 echo "Downloading latest ${COIN} binaries"
-wget  https://github.com/BitcoinGenX/BitcoinGenesisX/files/2853315/bitcoingenx-linux.zip
+wget  https://github.com/BitcoinGenX/BitcoinGenesisX/files/2896837/bitcoingenx-linux-static.zip
 unzip bitcoingenx-linux.zip
 sleep 3
 sudo mv /root/${COIN3l}/${COINDAEMON} /root/${COIN3l}/${COINDAEMONCLI} /usr/local/bin
