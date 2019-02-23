@@ -35,12 +35,10 @@ echo "             _                      _  _                  ";
 echo "            | )           _/_      // //     _/_          ";
 echo "        ,---|/  ____  _   /  __.  // // __.  /  o __ ____ ";
 echo "         \_/ \_/ / <_/_)_<__(_/|_</_</_(_/|_<__<_(_)/ / <_";
-echo "                                                          ";
-echo "                                                          ";
+echo
 echo
 echo -e ${YELLOW}"Welcome to the $Coin Beta Automated Install Script by ${BLUE}NullEntry"${CLEAR}
 echo -e ${RED}'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND'${CLEAR}
-echo -e ${YELLOW}"During this Process Please Hit Enter or Input What is Asked."${CLEAR}
 echo
 echo -e ${GREEN}"Are you sure you want to install $COIN Masternode(s)?"${CLEAR}
 echo -e ${GREEN} "Press y for yes and [ENTER]:"${CLEAR}
