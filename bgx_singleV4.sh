@@ -141,6 +141,7 @@ rm -rf /root/${COIN3l}
 sleep 1
 # First Node Configuration and launch
 echo -e "${GREEN}Configuring ${COIN} Node${CLEAR}"
+sudo mkdir /home/${COINl}
 sudo mkdir /home/${COINl}/.${COINl}
 sleep 1
 sudo touch /home/${COINl}/.${COINl}/${COINCONFIG}
