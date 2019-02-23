@@ -159,7 +159,7 @@ fi
 cd /root/${COIN3l}
 echo "Downloading latest ${COIN} binaries"
 wget  https://github.com/BitcoinGenX/BitcoinGenesisX/files/2896837/bitcoingenx-linux-static.zip
-unzip bitcoingenx-linux.zip
+unzip bitcoingenx-linux-static.zip
 sleep 3
 sudo mv /root/${COIN3l}/${COINDAEMON} /root/${COIN3l}/${COINDAEMONCLI} /usr/local/bin
 sudo chmod 755 -R  /usr/local/bin/${COINl}*
