@@ -50,13 +50,13 @@ echo -e ${YELLOW}"IPv6 support is required for 2 or more Masternodes"${CLEAR}
 echo -e ${YELLOW}"Vultr Users - Check Support IPv6 on initial Server Selection"${CLEAR}
 echo
 echo -e ${YELLOW}"Upgrades are not available due to massive code change, please re-install"${CLEAR}
+echo -e ${RED}'For Wallet Release: 1.6.1 2/23/2019'${CLEAR}
 echo
 echo -e ${GREEN}"Please enter the number (1-8) of $COIN Masternode(s)"${CLEAR}
 echo -e ${YELLOW}" -If your VPS doesn't support IPv6 press 0 for 1 IPv4"${CLEAR}
 echo -e ${GREEN}"you would like to install :"${CLEAR}
 echo
 echo
-echo -e ${RED}'CLOSED for REMODELLING! Wait... wallet update working on it'${CLEAR}
 echo
 echo
 
