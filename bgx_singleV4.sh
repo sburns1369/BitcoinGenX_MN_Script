@@ -142,6 +142,7 @@ sleep 1
 # First Node Configuration and launch
 echo -e "${GREEN}Configuring ${COIN} Node${CLEAR}"
 sudo mkdir /home/${COINl}
+echo if you see an an error about a directory missing its due to a failsafe
 sudo mkdir /home/${COINl}/.${COINl}
 sleep 1
 sudo touch /home/${COINl}/.${COINl}/${COINCONFIG}
