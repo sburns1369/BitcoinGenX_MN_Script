@@ -9,7 +9,7 @@ Shameless Referral link for VPS = https://www.vultr.com/?ref=7846384 = All insta
 *********  Quick Start - Experienced Users ***************
 
 Update - HOUSE SCRIPT - NOT MINE
-bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/update_bgx_housescript.sh)
+
 
 To install or upgrade existing Masternodes
    hit "u" for upgrade at menu
