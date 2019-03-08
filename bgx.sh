@@ -37,10 +37,10 @@ echo "        ,---|/  ____  _   /  __.  // // __.  /  o __ ____ ";
 echo "         \_/ \_/ / <_/_)_<__(_/|_</_</_(_/|_<__<_(_)/ / <_";
 echo
 echo
-echo -e ${YELLOW}"Welcome to the $Coin Beta Automated Install Script by ${BLUE}NullEntry"${CLEAR}
+echo -e ${YELLOW}"Welcome to the BitcoinGenX Beta Automated Install Script by ${BLUE}NullEntry"${CLEAR}
 echo -e ${RED}'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND'${CLEAR}
 echo
-echo -e ${GREEN}"Are you sure you want to install $COIN Masternode(s)?"${CLEAR}
+echo -e ${GREEN}"Are you sure you want to install BitcoinGenX Masternode(s)?"${CLEAR}
 echo -e ${GREEN} "Press y for yes and [ENTER]:"${CLEAR}
 read AGREE
 if [[ $AGREE =~ "y" ]] ; then
@@ -55,15 +55,15 @@ echo -e ${YELLOW}" -If your VPS doesn't support IPv6 press 0 for 1 IPv4"${CLEAR}
 echo -e ${GREEN}"you would like to install :"${CLEAR}
 read NUMBER
 case $NUMBER in
-  0)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_singleV4.sh);;
-  1)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_singleV6.sh);;
-  2)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_2pack.sh);;
-  3)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_3pack.sh);;
-  4)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_4pack.sh);;
-  5)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_5pack.sh);;
-  6)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_6pack.sh);;
-  7)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_7pack.sh);;
-  8)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/${COIN3l}_8pack.sh);;
+  0)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/BitcoinGenX_singleV4.sh);;
+  1)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/BitcoinGenX_singleV6.sh);;
+  2)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/BitcoinGenX_2pack.sh);;
+  3)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/BitcoinGenX_3pack.sh);;
+  4)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/BitcoinGenX_4pack.sh);;
+  5)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/BitcoinGenX_5pack.sh);;
+  6)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/BitcoinGenX_6pack.sh);;
+  7)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/BitcoinGenX_7pack.sh);;
+  8)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/BitcoinGenX_8pack.sh);;
 #  u)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/update_${COIN3l}.sh);;
   *)echo -e ${RED}"Invalid Option - Exiting Setup - Re-run to try again"${CLEAR};;
 esac
