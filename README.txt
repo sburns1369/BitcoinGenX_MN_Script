@@ -7,6 +7,9 @@ This script is for use on fresh installations of Ubuntu 16.04 x64 only; or Ubunt
 Shameless Referral link for VPS = https://www.vultr.com/?ref=7846384 = All instances built and tested on VULT $3.5 or $5/monthly servers.
 
 *********  Quick Start - Experienced Users ***************
+Copy and paste into your VPS: 
+
+bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/bgx.sh)
 
 Hit "y" to start when prompted enter masternode private key(s)
 
