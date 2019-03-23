@@ -1,7 +1,13 @@
 #!/bin/bash
 #0.99-- NullEntryDev Script
-NODESL=Two
-NODESN=2
+
+failed
+
+./testv4.sh: line 118: syntax error near unexpected token `fi'
+./testv4.sh: line 118: `fi'
+
+NODESL=One
+NODESN=1
 BLUE='\033[0;96m'
 GREEN='\033[0;92m'
 RED='\033[0;91m'
@@ -13,7 +19,7 @@ exit 1
 fi
 echo
 echo
-echo -e ${GREEN}"Are you sure you want to continue the installation of ${NODESL} BitcoinGenX Masternodes?"
+echo -e ${GREEN}"Are you sure you want to continue the installation of a BitcoinGenX Masternode?"
 echo -e "type y/n followed by [ENTER]:"${CLEAR}
 read AGREE
 if [[ $AGREE =~ "y" ]] ; then
@@ -39,18 +45,11 @@ else
 sudo adduser --system --home /home/bitcoingenx bitcoingenx
 MN1=0
 fi
-if id "bitcoingenx2" >/dev/null 2>&1; then
-echo -e ${YELLOW} "Found user bitcoingenx2!"${CLEAR}
-MN2=1
-else
-sudo adduser --system --home /home/bitcoingenx2 bitcoingenx2
-MN2=0
-fi
 echo
 echo
 echo
 echo
-echo -e ${RED}"Your New Masternode Private Keys are needed,"${CLEAR}
+echo -e ${RED}"Your New Masternode Private Key is needed,"${CLEAR}
 echo -e ${GREEN}" -which can be generated from the local wallet"${CLEAR}
 echo
 echo -e ${YELLOW}"You can edit the config later if you don't have this"${CLEAR}
@@ -60,18 +59,11 @@ echo
 echo -e ${YELLOW}"Right Click to paste in some SSH Clients"${CLEAR}
 echo
 if [[ "$MN1" -eq "0" ]]; then
-echo -e ${GREEN}"Please Enter Your First Masternode Private Key:"${CLEAR}
+echo -e ${GREEN}"Please Enter Your Masternode Private Key:"${CLEAR}
 read MNKEY
 echo
 else
 echo -e ${YELLOW}"Skipping First Masternode Key"${CLEAR}
-fi
-if [[ "$MN2" -eq "0" ]]; then
-echo -e ${GREEN}"Please Enter Your Second Masternode Private Key:"${CLEAR}
-read MNKEY2
-echo
-else
-echo -e ${YELLOW}"Skipping Second Masternode Key"${CLEAR}
 fi
 cd ~
 if [[ $NULLREC = "y" ]] ; then
@@ -128,43 +120,7 @@ fi
 if [[ customIP = "y" ]] ; then
 echo -e ${GREEN}"IP for Masternode 1"${CLEAR}
 read MNIP1
-echo -e ${GREEN}"IP for Masternode 2"${CLEAR}
-read MNIP2
 else
-regex='^([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}$'
-FINDIP=$(hostname -I | cut -f2 -d' '| cut -f1-7 -d:)
-if [[ $FINDIP =~ $regex ]]; then
-echo "IPv6 Address check is good"
-echo ${FINDIP} testing note
-IP=${FINDIP}
-echo ${IP}
-else
-echo "IPv6 Address check is not expected, getting IPv6 Helper to recalculate"
-echo $FINDIP - testing note 1
-sudo apt-get install sipcalc
-echo $FINDIP - testing note 2
-FINDIP=$(hostname -I | cut -f3 -d' '| cut -f1-8 -d:)
-echo $FINDIP - check 3
-echo "Attempting to adjust results and re-calculate IPv6 Address"
-FINDIP=$(sipcalc ${FINDIP} | fgrep Expanded | cut -d ' ' -f3)
-if [[ $FINDIP =~ $regex ]]; then
-FINDIP=$(echo ${FINDIP} | cut -f1-7 -d:)
-echo "IPv6 Address check is good"
-IP=${FINDIP}
-else
-echo "IPv6 Addressing check has failed. Contact NullEntry Support"
-echo ${IP} testing note
-exit 1
-fi
-fi
-echo ${MNIP1} testing note
-echo ${IP} testing note
-echo -e ${YELLOW} "Building IP Tables"${CLEAR}
-sudo touch ip.tmp
-for i in {15361..15375}; do printf "${IP}:%.4x\n" $i >> ip.tmp; done
-MNIP1=$(sed -n '1p' < ip.tmp)
-MNIP2=$(sed -n '2p' < ip.tmp)
-rm -rf ip.tmp
 fi
 if grep -Fxq "swapInstalled: true" /usr/local/nullentrydev/mnodes.log
 then
@@ -182,7 +138,6 @@ fi
 fi
 cd ~
 touch bgxcheck.tmp
-ps aux | grep bitcoingenx >> bgxcheck.tmp
 if grep home/bitcoingenx/.bitcoingenx bgxcheck.tmp
 then
 echo Found OLD ${NC} bgx Node running
@@ -191,7 +146,7 @@ else
 echo No ${NC} bgx Node not running
 OldNode="0"
 fi
-until [[ $NC = 9 ]]; do
+until [ $NC -eq 9 ]; do
 if grep /home/bitcoingenx${NC}/.bitcoingenx bgxcheck.tmp
 then
 echo Found ${NC} bgx Node running
@@ -204,8 +159,14 @@ echo $NC
 fi
 NC=$[$NC+1]
 done
-rm -r bgxcheck.tmp
-if [[ "$OldNode" = "1" ]]; then
+if [ ! -d /root/bgx ]; then
+sudo mkdir /root/bgx
+fi
+cd /root/bgx
+echo "Downloading latest BitcoinGenX binaries"
+wget https://github.com/BitcoinGenX/BitcoinGenesisX/files/2853315/bitcoingenx-linux.zip
+unzip bitcoingenx-linux.zip
+if [[ "$Oldnode" = "1" ]]; then
 bitcoingenx-cli -datadir=/home/bitcoingenx/.bitcoingenx stop
 fi
 if [[ "$IPN1" = "1" ]]; then
@@ -238,19 +199,12 @@ fi
 if [[ "$IPN0" = "1" ]]; then
 bitcoingenx-cli -datadir=/home/bitcoingenx0/.bitcoingenx stop
 fi
-if [ ! -d /root/bgx ]; then
-sudo mkdir /root/bgx
-fi
-cd /root/bgx
-echo "Downloading latest BitcoinGenX binaries"
-wget https://github.com/BitcoinGenX/BitcoinGenesisX/files/2896837/bitcoingenx-linux-static.zip
-unzip bitcoingenx-linux-static.zip
 sleep 3
 sudo mv /root/bgx/bitcoingenxd /root/bgx/bitcoingenx-cli /usr/local/bin
 sudo chmod 755 -R /usr/local/bin/bitcoingenx*
 rm -rf /root/bgx
 if [ ! -f /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf ]; then
-echo -e "${GREEN}Configuring First BitcoinGenX Node${CLEAR}"
+echo -e "${GREEN}Configuring BitcoinGenX Node${CLEAR}"
 sudo mkdir /home/bitcoingenx/.bitcoingenx
 sudo touch /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
 echo "rpcuser=user"`shuf -i 100000-9999999 -n 1` >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
@@ -262,9 +216,9 @@ echo "maxconnections=250" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
 echo "masternode=1" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
 echo "rpcport=19021" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
 echo "listen=0" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
-echo "externalip=[${MNIP1}]:4488" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+echo "externalip=$(hostname -I | cut -f1 -d' '):4488" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
 echo "masternodeprivkey=$MNKEY" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
-echo "addnode=23.94.102.195:4488" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+echo "addnode=0" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
 MN1=0
 if [[ $NULLREC = "y" ]] ; then
 echo "masterNode1 : true" >> /usr/local/nullentrydev/bgx.log
@@ -276,7 +230,7 @@ echo -e ${YELLOW}"Found /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf"${CLEAR}
 echo -e ${YELLOW}"Skipping Configuration there"${CLEAR}
 fi
 echo
-echo -e ${YELLOW}"Launching First BGX Node"${CLEAR}
+echo -e ${YELLOW}"Launching BGX Node"${CLEAR}
 bitcoingenxd -datadir=/home/bitcoingenx/.bitcoingenx -daemon
 echo
 echo -e ${YELLOW}"Looking for a Shared Masternode Service? Check out Crypto Hash Tank" ${CLEAR}
@@ -285,77 +239,24 @@ echo -e ${YELLOW}" https://www.cryptohashtank.com/TJIF "${CLEAR}
 echo
 echo -e ${YELLOW}"Special Thanks to the BitcoinGenX (BGX) Community" ${CLEAR}
 sleep 20
-if [ ! -f /home/bitcoingenx2/.bitcoingenx/bitcoingenx.conf ]; then
-if [ ! -f /home/bitcoingenx2/bitcoingenx.conf ]; then
-echo -e "${YELLOW}Second BitcoinGenX Normal Warning - Node Configuration Not Found....${CLEAR}"
-echo -e "${GREEN}Configuring Second BitcoinGenX Node${CLEAR}"
-sudo mkdir /home/bitcoingenx2/.bitcoingenx
-sudo touch /home/bitcoingenx2/bitcoingenx.conf
-echo "rpcuser=user"`shuf -i 100000-9999999 -n 1` >> /home/bitcoingenx2/bitcoingenx.conf
-echo "rpcpassword=pass"`shuf -i 100000-9999999 -n 1` >> /home/bitcoingenx2/bitcoingenx.conf
-echo "rpcallowip=127.0.0.1" >> /home/bitcoingenx2/bitcoingenx.conf
-echo "server=1" >> /home/bitcoingenx2/bitcoingenx.conf
-echo "daemon=1" >> /home/bitcoingenx2/bitcoingenx.conf
-echo "maxconnections=250" >> /home/bitcoingenx2/bitcoingenx.conf
-echo "masternode=1" >> /home/bitcoingenx2/bitcoingenx.conf
-echo "rpcport=19022" >> /home/bitcoingenx2/bitcoingenx.conf
-echo "listen=0" >> /home/bitcoingenx2/bitcoingenx.conf
-echo "externalip=[${MNIP2}]:4488" >> /home/bitcoingenx2/bitcoingenx.conf
-echo "masternodeprivkey=$MNKEY2" >> /home/bitcoingenx2/bitcoingenx.conf
-echo "addnode=[${MNIP1}]" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
-if [[ $NULLREC = "y" ]] ; then
-echo "masterNode2 : true" >> /usr/local/nullentrydev/bgx.log
-echo "walletVersion2 : 1.4.0COINVERSION=1.6.0" >> /usr/local/nullentrydev/bgx.log
-echo "scriptVersion2 : 0.99" >> /usr/local/nullentrydev/bgx.log
-fi
-else
-echo
-echo -e ${GREEN}"Found /home/bitcoingenx2/bitcoingenx.conf"${CLEAR}
-echo -e ${YELLOW}"Skipping Pre-stage for Second Node "${CLEAR}
-MN2=0
-fi
-else
-echo -e ${YELLOW}"Found /home/bitcoingenx2/.bitcoingenx/bitcoingenx.conf"${CLEAR}
-echo -e ${YELLOW}"Skipping Configuration for Second Node"${CLEAR}
-fi
-echo
 echo -e "${RED}This process can take a while!${CLEAR}"
-echo -e "${YELLOW}Waiting on First Masternode Block Chain to Synchronize${CLEAR}"
-echo -e "${YELLOW}Once complete, it will stop and copy the block chain to${CLEAR}"
-echo -e "${YELLOW}the other masternodes. This prevent all masternodes${CLEAR}"
-echo -e "${YELLOW}from downloading the block chain individually; taking up${CLEAR}"
-echo -e "${YELLOW}more time and resources. Current Block count will be displayed below.${CLEAR}"
+echo -e "${YELLOW}Waiting on Masternode Block Chain to Synchronize${CLEAR}"
 until bitcoingenx-cli -datadir=/home/bitcoingenx/.bitcoingenx mnsync status | grep -m 1 'IsBlockchainSynced" : true'; do
 bitcoingenx-cli -datadir=/home/bitcoingenx/.bitcoingenx getblockcount
 sleep 60
 done
-echo -e "${GREEN}Haulting and Replicating First BitcoinGenX Node${CLEAR}"
 
-bitcoingenx-cli -datadir=/home/bitcoingenx/.bitcoingenx stop
-sleep 10
-if [[ "$MN2" -eq "0" ]]; then
-sudo cp -r /home/bitcoingenx/.bitcoingenx/* /home/bitcoingenx2/.bitcoingenx
-rm /home/bitcoingenx2/.bitcoingenx/bitcoingenx.conf
-cp -r /home/bitcoingenx2/bitcoingenx.conf /home/bitcoingenx2/.bitcoingenx/bitcoingenx.conf
-sleep 1
-fi
-echo -e ${YELLOW}"Launching First BGX Node"${CLEAR}
-bitcoingenxd -datadir=/home/bitcoingenx/.bitcoingenx -daemon
-sleep 20
-echo -e ${YELLOW}"Launching Second BGX Node"${CLEAR}
-bitcoingenxd -datadir=/home/bitcoingenx2/.bitcoingenx -daemon
-sleep 20
-echo -e ${BOLD}"All ${NODESN} BGX Nodes Launched".${CLEAR}
+echo
+echo -e ${BOLD}"Your BGX Node has Launched."${CLEAR}
 echo
 
 echo -e "${GREEN}You can check the status of your BGX Masternode with"${CLEAR}
+echo -e "${YELLOW} bitcoingenx-cli -datadir=/home/bitcoingenx/.bitcoingenx masternode status"${CLEAR}
 echo -e "${YELLOW}For mn1: \"bitcoingenx-cli -datadir=/home/bitcoingenx/.bitcoingenx masternode status\""${CLEAR}
-echo -e "${YELLOW}For mn2: \"bitcoingenx-cli -datadir=/home/bitcoingenx2/.bitcoingenx masternode status\""${CLEAR}
 echo
 echo -e "${RED}Status 29 may take a few minutes to clear while the daemon processes the chainstate"${CLEAR}
 echo -e "${GREEN}The data below needs to be in your local masternode configuration file:${CLEAR}"
-echo -e "${BOLD} Masternode - \#1 IP: [${MNIP1}]:4488${CLEAR}"
-echo -e "${BOLD} Masternode - \#2 IP: [${MNIP2}]:4488${CLEAR}"
+echo -e "${BOLD} Masternode - IP: $(hostname -I | cut -f1 -d' '):4488${CLEAR}"
 fi
 echo -e ${BLUE}" Your patronage is appreciated, tipping addresses"${CLEAR}
 echo -e ${BLUE}" BitcoinGenX address: BayScFpFgPBiDU1XxdvozJYVzM2BQvNFgM"${CLEAR}
