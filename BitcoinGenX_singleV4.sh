@@ -1,7 +1,7 @@
 #!/bin/bash
-#0.9g-- NullEntryDev Script
-NODESL=One
-NODESN=1
+#0.99-- NullEntryDev Script
+NODESL=Eight
+NODESN=8
 BLUE='\033[0;96m'
 GREEN='\033[0;92m'
 RED='\033[0;91m'
@@ -27,11 +27,23 @@ echo -e ${BLUE}"Zero Confidental information or Wallet keys will be stored in it
 echo -e ${YELLOW}"Press y to agree followed by [ENTER], or just [ENTER] to disagree"${CLEAR}
 read NULLREC
 echo
+echo -e ${GREEN}"Would you like to enter custom IP addresses?"${CLEAR}
+echo -e ${YELLOW}"If you don't know the answer, hit n for no"${CLEAR}
+echo -e ${YELLOW}"If you have custom IPs hit y for yes"${CLEAR}
+read customIP
+echo "Creating ${NODESN} BitcoinGenX system user(s) with no-login access:"
+if id "bitcoingenx" >/dev/null 2>&1; then
+echo "user exists"
+MN1=1
+else
+sudo adduser --system --home /home/bitcoingenx bitcoingenx
+MN1=0
+fi
 echo
 echo
 echo
 echo
-echo -e ${RED}"Your Masternode Private Key is needed,"${CLEAR}
+echo -e ${RED}"Your New Masternode Private Key is needed,"${CLEAR}
 echo -e ${GREEN}" -which can be generated from the local wallet"${CLEAR}
 echo
 echo -e ${YELLOW}"You can edit the config later if you don't have this"${CLEAR}
@@ -40,11 +52,13 @@ echo -e ${YELLOW}"And the script installation will hang and fail"${CLEAR}
 echo
 echo -e ${YELLOW}"Right Click to paste in some SSH Clients"${CLEAR}
 echo
+if [[ "$MN1" -eq "0" ]]; then
 echo -e ${GREEN}"Please Enter Your Masternode Private Key:"${CLEAR}
-read privkey
+read MNKEY
 echo
-echo "Creating ${NODESN} BitcoinGenX system users with no-login access:"
-sudo adduser --system --home /home/bitcoingenx bitcoingenx
+else
+echo -e ${YELLOW}"Skipping First Masternode Key"${CLEAR}
+fi
 cd ~
 if [[ $NULLREC = "y" ]] ; then
 if [ ! -d /usr/local/nullentrydev/ ]; then
@@ -97,27 +111,95 @@ if [[ $NULLREC = "y" ]] ; then
 echo "dependenciesInstalled: true" >> /usr/local/nullentrydev/mnodes.log
 fi
 fi
-echo -e ${YELLOW} "Building IP Tables"${CLEAR}
-sudo touch ip.tmp
-for i in {15361..15375}; do printf "${IP}:%.4x\n" $i >> ip.tmp; done
+if [[ customIP = "y" ]] ; then
+echo -e ${GREEN}"IP for Masternode 1"${CLEAR}
+read MNIP1
+## what goes here?
+fi
+if grep -Fxq "swapInstalled: true" /usr/local/nullentrydev/mnodes.log
+then
+echo -e ${RED}"Skipping... Swap Area already made"${CLEAR}
+else
 cd /var
 sudo touch swap.img
 sudo chmod 600 swap.img
 sudo dd if=/dev/zero of=/var/swap.img bs=1024k count=4096
 sudo mkswap /var/swap.img
 sudo swapon /var/swap.img
+if [[ $NULLREC = "y" ]] ; then
+echo "swapInstalled: true" >> /usr/local/nullentrydev/mnodes.log
+fi
+fi
 cd ~
+touch bgxcheck.tmp
+ps aux | grep bitcoingenx >> bgxcheck.tmp
+if grep home/bitcoingenx/.bitcoingenx bgxcheck.tmp
+then
+echo Found OLD ${NC} bgx Node running
+OldNode="1"
+else
+echo No ${NC} bgx Node not running
+OldNode="0"
+fi
+until [[ $NC = 9 ]]; do
+if grep /home/bitcoingenx${NC}/.bitcoingenx bgxcheck.tmp
+then
+echo Found ${NC} bgx Node running
+declare IPN$NC="1"
+RB=1
+else
+echo No ${NC} bgx Node not running
+declare IPN$NC="0"
+echo $NC
+fi
+NC=$[$NC+1]
+done
+rm -r bgxcheck.tmp
+if [[ "$OldNode" = "1" ]]; then
+bitcoingenx-cli -datadir=/home/bitcoingenx/.bitcoingenx stop
+fi
+if [[ "$IPN1" = "1" ]]; then
+bitcoingenx-cli -datadir=/home/bitcoingenx1/.bitcoingenx stop
+fi
+if [[ "$IPN2" = "1" ]]; then
+bitcoingenx-cli -datadir=/home/bitcoingenx2/.bitcoingenx stop
+fi
+if [[ "$IPN3" = "1" ]]; then
+bitcoingenx-cli -datadir=/home/bitcoingenx3/.bitcoingenx stop
+fi
+if [[ "$IPN4" = "1" ]]; then
+bitcoingenx-cli -datadir=/home/bitcoingenx4/.bitcoingenx stop
+fi
+if [[ "$IPN5" = "1" ]]; then
+bitcoingenx-cli -datadir=/home/bitcoingenx5/.bitcoingenx stop
+fi
+if [[ "$IPN6" = "1" ]]; then
+bitcoingenx-cli -datadir=/home/bitcoingenx6/.bitcoingenx stop
+fi
+if [[ "$IPN7" = "1" ]]; then
+bitcoingenx-cli -datadir=/home/bitcoingenx7/.bitcoingenx stop
+fi
+if [[ "$IPN8" = "1" ]]; then
+bitcoingenx-cli -datadir=/home/bitcoingenx8/.bitcoingenx stop
+fi
+if [[ "$IPN9" = "1" ]]; then
+bitcoingenx-cli -datadir=/home/bitcoingenx9/.bitcoingenx stop
+fi
+if [[ "$IPN0" = "1" ]]; then
+bitcoingenx-cli -datadir=/home/bitcoingenx0/.bitcoingenx stop
+fi
 if [ ! -d /root/bgx ]; then
 sudo mkdir /root/bgx
 fi
 cd /root/bgx
 echo "Downloading latest BitcoinGenX binaries"
-wget https://github.com/BitcoinGenX/BitcoinGenesisX/files/2853315/bitcoingenx-linux.zip
-unzip bitcoingenx-linux.zip
+wget https://github.com/BitcoinGenX/BitcoinGenesisX/files/2896837/bitcoingenx-linux-static.zip
+unzip bitcoingenx-linux-static.zip
 sleep 3
 sudo mv /root/bgx/bitcoingenxd /root/bgx/bitcoingenx-cli /usr/local/bin
 sudo chmod 755 -R /usr/local/bin/bitcoingenx*
 rm -rf /root/bgx
+if [ ! -f /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf ]; then
 echo -e "${GREEN}Configuring BitcoinGenX Node${CLEAR}"
 sudo mkdir /home/bitcoingenx/.bitcoingenx
 sudo touch /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
@@ -131,13 +213,23 @@ echo "masternode=1" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
 echo "rpcport=19021" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
 echo "listen=0" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
 echo "externalip=$(hostname -I | cut -f1 -d' '):4488" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
-echo "masternodeprivkey=$privkey" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+echo "masternodeprivkey=$MNKEY" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+echo "addnode=23.94.102.195:4488" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+echo "addnode=0" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+echo "addnode=0" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+echo "addnode=0" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+echo "addnode=0" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+echo "addnode=0" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+MN1=0
 if [[ $NULLREC = "y" ]] ; then
 echo "masterNode1 : true" >> /usr/local/nullentrydev/bgx.log
 echo "walletVersion1 : 1.4.0COINVERSION=1.6.0" >> /usr/local/nullentrydev/bgx.log
-echo "scriptVersion1 : 0.9g" >> /usr/local/nullentrydev/bgx.log
+echo "scriptVersion1 : 0.99" >> /usr/local/nullentrydev/bgx.log
 fi
-sleep 5
+else
+echo -e ${YELLOW}"Found /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf"${CLEAR}
+echo -e ${YELLOW}"Skipping Configuration there"${CLEAR}
+fi
 echo
 echo -e ${YELLOW}"Launching BGX Node"${CLEAR}
 bitcoingenxd -datadir=/home/bitcoingenx/.bitcoingenx -daemon
