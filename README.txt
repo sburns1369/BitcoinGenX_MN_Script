@@ -1,25 +1,24 @@
 # BitcoinGenX_MN_Script
 
-1 to 4 Masternode Installation Script for BitcoinGenX
+1 to 8 Masternode Installation Script for BitcoinGenX
 
 This script is for use on fresh installations of Ubuntu 16.04 x64 only; or Ubuntu 16.04 x64 installations that were installed by other Sburns/NullEntry (Github = https://github.com/sburns1369).  All scripts where tested on a Vultr VPS
 
 Shameless Referral link for VPS = https://www.vultr.com/?ref=7846384 = All instances built and tested on VULT $3.5 or $5/monthly servers.
 
 *********  Quick Start - Experienced Users ***************
-
-Update - HOUSE SCRIPT - NOT MINE
-
-
-To install or upgrade existing Masternodes
-   hit "u" for upgrade at menu
-
-Copy and Paste:
+Copy and paste into your VPS: 
 
 bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/bgx.sh)
 
 Hit "y" to start when prompted enter masternode private key(s)
-Wait about 5 minutes, and hit enter when prompted about 5 minutes in (programming dependencies installation)
+
+Hit "y" to agree to storing data on VPS
+
+Hit "n" to start when prompted for custom IP's
+
+Wait about 15 minutes, and hit enter when prompted about 5 minutes in (programming dependencies installation)
+
 Sync time is around 2 hours
 Check MN 1
 bitcoingenx-cli -datadir=/home/bitcoingenx/.bitcoingenx mnsync status
