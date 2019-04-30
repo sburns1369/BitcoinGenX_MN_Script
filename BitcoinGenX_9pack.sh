@@ -832,7 +832,7 @@ echo -e "${BOLD} Masternode - \#5 IP: [${MNIP5}]:4488${CLEAR}"
 echo -e "${BOLD} Masternode - \#6 IP: [${MNIP6}]:4488${CLEAR}"
 echo -e "${BOLD} Masternode - \#7 IP: [${MNIP7}]:4488${CLEAR}"
 echo -e "${BOLD} Masternode - \#8 IP: [${MNIP8}]:4488${CLEAR}"
-echo -e "${BOLD} Masternode - \#9 IP: [${MNIP8}]:4488${CLEAR}"
+echo -e "${BOLD} Masternode - \#9 IP: [${MNIP9}]:4488${CLEAR}"
 fi
 echo -e ${BLUE}" Your patronage is appreciated, tipping addresses"${CLEAR}
 echo -e ${BLUE}" BitcoinGenX address: BayScFpFgPBiDU1XxdvozJYVzM2BQvNFgM"${CLEAR}
