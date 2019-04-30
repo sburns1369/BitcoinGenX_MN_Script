@@ -742,7 +742,6 @@ bitcoingenxd -datadir=/home/bitcoingenx8/.bitcoingenx -daemon
 sleep 10
 echo -e ${BOLD}"All ${NODESN} BGX Nodes Launched".${CLEAR}
 echo
-
 echo -e "${GREEN}You can check the status of your BGX Masternode with"${CLEAR}
 echo -e "${YELLOW}For mn1: \"bitcoingenx-cli -datadir=/home/bitcoingenx/.bitcoingenx masternode status\""${CLEAR}
 echo -e "${YELLOW}For mn2: \"bitcoingenx-cli -datadir=/home/bitcoingenx2/.bitcoingenx masternode status\""${CLEAR}
