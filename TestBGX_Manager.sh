@@ -1033,6 +1033,7 @@ function_build_node_configuration(){
   echo "datacarrier=1" >> /home/${COINl}${nodeunit}/.${COINl}/${COINCONFIG}
   else
   echo "listen=0" >> /home/${COINl}${nodeunit}/.${COINl}/${COINCONFIG}
+  fi
   if [[ $nodeunit -eq 1 ]] ; then
     echo "externalip=${MNIP1}:$COINPORT" >> /home/${COINl}${nodeunit}/.${COINl}/${COINCONFIG}
     elif [[ $nodeunit -eq 2 ]] ; then
