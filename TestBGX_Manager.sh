@@ -45,9 +45,9 @@ CLEAR='\033[0m'
 pause(){
   read -p "Press [Enter] key to continue..." fackEnterKey
 }
-test_pause(){
-  read -p "Testing Pause - Report if you see this - Press [Enter] key to continue..." fackEnterKey
-}
+#test_pause(){
+#  read -p "Testing Pause - Report if you see this - Press [Enter] key to continue..." fackEnterKey
+#}
 #Null Entry logo
 null_logo(){
 echo
@@ -956,8 +956,9 @@ function_first_nodecheck(){
         echo -e "${GREEN}This is going to take a few minutes, and when done will display"
         echo -e "${GREEN}information you need for your masternode.conf on your local wallet"
         echo
-        echo -e ${GREEN}"Do you have Masternode Private Keys you want to use; or would you"${CLEAR}
-        echo -e ${GREEN}"like this script to generate them for you?"${CLEAR}
+        echo -e"Please Enter your first Masternode Private Key"
+        #echo -e ${GREEN}"Do you have Masternode Private Keys you want to use; or would you"${CLEAR}
+        #echo -e ${GREEN}"like this script to generate them for you?"${CLEAR}
         read MNKEY1
         function_install
         #add Regex or "are you sure"
@@ -1008,12 +1009,12 @@ function_build_node_configuration(){
   echo -e "${GREEN}Configuring ${COIN} Masternode #${nodeunit} ${CLEAR}"
   if [ ! -d /home/${COINl}${nodeunit} ]; then
       sudo mkdir /home/${COINl}${nodeunit}
-      test_pause
+      #test_pause
       echo test mkdir /home/${COINl}${nodeunit}
   fi
   if [ ! -d /home/${COINl}${nodeunit}/.${COINl} ]; then
       sudo mkdir /home/${COINl}${nodeunit}/.${COINl}
-      test_pause
+      #test_pause
       echo test mkdir /home/${COINl}${nodeunit}/.${COINl}
   fi
   sudo touch /home/${COINl}${nodeunit}/.${COINl}/${COINCONFIG}
@@ -1101,7 +1102,7 @@ launch_first_node(){
     echo "masterNode1 : true" >> /usr/local/nullentrydev/${COIN3l}.log
     echo "walletVersion1 : $COINVERSION" >> /usr/local/nullentrydev/${COIN3l}.log
     echo "scriptVersion1 : $SCRIPTVERSION" >> /usr/local/nullentrydev/${COIN3l}.log
-    test_pause
+    #test_pause
 }
 ##End Launch first node
 ##Start Waiting for Launch of First Nodes
@@ -1122,7 +1123,7 @@ until ${COINDAEMONCLI} -datadir=/home/${COINl}${nodeunit}/${COINCORE} mnsync sta
     ${COINDAEMONCLI} -datadir=/home/${COINl}${nodeunit}/${COINCORE} getblockcount
     sleep 5
   done
-  test_pause
+  #test_pause
 }
 ##End launch of first nodes
 ##Start of replicate nodes
@@ -1261,14 +1262,14 @@ regex='^([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}$'
 FINDIP=$(hostname -I | cut -f2 -d' '| cut -f1-7 -d:)
 if [[ $FINDIP =~ $regex ]]; then
 echo "IPv6 Address check is good"
-echo ${FINDIP} testing note
+#echo ${FINDIP} testing note
 IP=${FINDIP}
 echo ${IP}
 else
 echo "IPv6 Address check is not expected, getting IPv6 Helper to recalculate"
-echo $FINDIP - testing note 1
+#echo $FINDIP - testing note 1
 sudo apt-get install sipcalc
-echo $FINDIP - testing note 2
+#echo $FINDIP - testing note 2
 FINDIP=$(hostname -I | cut -f3 -d' '| cut -f1-8 -d:)
 echo $FINDIP - check 3
 echo "Attempting to adjust results and re-calculate IPv6 Address"
@@ -1283,8 +1284,8 @@ echo ${IP} testing note
 exit 1
 fi
 fi
-echo ${MNIP1} testing note
-echo ${IP} testing note
+#echo ${MNIP1} testing note
+#echo ${IP} testing note
 echo -e ${YELLOW} "Building IP Tables"${CLEAR}
 sudo touch ${DPATH}ip.tbl
 echo \#If editing IP Table list them below.  Starting from masternode 1 to 10 > ${DPATH}ip.tbl
@@ -1320,12 +1321,12 @@ fi
 ## Start Bootstrap
 function_bootstrap(){
   cd ~
-if [ ! -d /root/${COIN3l} ]; then
-  sudo mkdir /root/${COIN3l}
-fi
-cd /root/${COIN3l}
+  if [ ! -d /bootstrap ]; then
+  sudo mkdir /bootstrap/
+  fi
+cd /bootstrap/
 echo "Attempting to get Bootstrap, please wait"
-pause
+#pause
 wget ${NEBootStrap}
 sleep 1
 if [ ! -d ${COINl}1/.${COINl} ]; then
@@ -1334,11 +1335,11 @@ if [ ! -d ${COINl}1/.${COINl} ]; then
   else
   echo "Found /home/${COINl}1/.${COINl} "
 fi
-#add check before downloading
 sudo apt-get install unrar
-unrar e bootstrap.rar /home/${COINl}1/.${COINl}
-test_pause
-rm -rf /root/${COIN3l}
+sleep 3
+unrar e bootstrap.rar /home/${COINl}/.${COINl}
+cd ..
+rm -rf /bootstrap/
 }
 # installation Core
 function_install(){
