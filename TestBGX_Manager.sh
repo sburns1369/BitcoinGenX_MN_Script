@@ -23,14 +23,14 @@ COINCORE=.bitcoingenx
 COINCONFIG=bitcoingenx.conf
 COINHOME=/home/bitcoingenx
 NEBootStrap=http://nullentry.com/chain/BGX/bootstrap.rar
-ADDNODE0=207.180.249.132
-ADDNODE1=138.197.153.30
-ADDNODE2=167.86.80.112
-ADDNODE3=45.32.234.220
-ADDNODE4=142.93.155.59
-ADDNODE5=95.216.236.193
-COINPORT=2219
-COINRPCPORT=29021
+ADDNODE0=108.61.179.198
+ADDNODE1=206.189.227.156
+ADDNODE2=155.138.207.17
+ADDNODE3=5.189.163.30
+ADDNODE4=213.227.154.56
+ADDNODE5=23.106.215.65
+COINPORT=4488
+COINRPCPORT=19201
 #path to NullEntryDev stuff
 DPATH=/usr/local/nullentrydev/
 #IPCHECK
@@ -1024,9 +1024,14 @@ function_build_node_configuration(){
   echo "daemon=1" >> /home/${COINl}${nodeunit}/.${COINl}/${COINCONFIG}
   echo "maxconnections=250" >> /home/${COINl}${nodeunit}/.${COINl}/${COINCONFIG}
   echo "masternode=1" >> /home/${COINl}${nodeunit}/.${COINl}/${COINCONFIG}
+  echo ""
 ##need to build master statement for coinport
   RPCPORT=$(($COINRPCPORT+$nodeunit-1))
   echo "rpcport=${RPCPORT}" >> /home/${COINl}${nodeunit}/.${COINl}/${COINCONFIG}
+  if [[ $nodeunit -eq 1 ]] ; then
+  echo "listen=1" >> /home/${COINl}${nodeunit}/.${COINl}/${COINCONFIG}
+  echo "datacarrier=1" >> /home/${COINl}${nodeunit}/.${COINl}/${COINCONFIG}
+  else
   echo "listen=0" >> /home/${COINl}${nodeunit}/.${COINl}/${COINCONFIG}
   if [[ $nodeunit -eq 1 ]] ; then
     echo "externalip=${MNIP1}:$COINPORT" >> /home/${COINl}${nodeunit}/.${COINl}/${COINCONFIG}
@@ -1135,7 +1140,7 @@ start_All_Nodes
 }
 ### Start - Masternode function_calculate_Masternode_Install
 function_new_masternode_install_menu(){
-  echo -e ${GREEN}" How many ${COIN3} Masternode(s) would you like to Install? [1 - 8]"${CLEAR}
+  echo -e ${GREEN}" How many ${COIN3} Masternode(s) would you like to Install? [1 - 10]"${CLEAR}
   echo -e "Press [C] to exit"
   read -p "Enter Number : " Install_Count
   case $Install_Count in
@@ -1157,7 +1162,7 @@ function_install_math() {
 function_masternode_upgrade(){
     clear
     echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-    echo "   How Many Masternode Do you want to Run?"
+    echo "   How Many Masternode Do you Want to Run?"
     echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     echo -e "1 - One Masternode"
     echo -e "2 - Masternode Two"
@@ -1180,23 +1185,23 @@ function_masternode_upgrade(){
   	read -p "Enter choice " choice
     case $choice in
       1) build_first_node ;;
-      2)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/BitcoinGenX_2pack.sh
+      2) bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/BitcoinGenX_2pack.sh)
       pause ;;
-      3)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/BitcoinGenX_3pack.sh
+      3) bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/BitcoinGenX_3pack.sh)
       pause ;;
-      4)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/BitcoinGenX_4pack.sh
+      4) bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/BitcoinGenX_4pack.sh)
       pause ;;
-      5)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/BitcoinGenX_5pack.sh
+      5) bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/BitcoinGenX_5pack.sh)
       pause ;;
-      6)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/BitcoinGenX_6pack.sh
+      6) bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/BitcoinGenX_6pack.sh)
       pause ;;
-      7)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/BitcoinGenX_7pack.sh
+      7) bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/BitcoinGenX_7pack.sh)
       pause ;;
-      8)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/BitcoinGenX_8pack.sh
+      8) bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/BitcoinGenX_8pack.sh)
       pause ;;
-      9)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/BitcoinGenX_9pack.sh
+      9) bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/BitcoinGenX_9pack.sh)
       pause ;;
-      10)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/BitcoinGenX_10pack.sh)
+      10) bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Script/master/BitcoinGenX_10pack.sh)
       pause ;;
       b) echo -e "backing out" ;;
       B) echo -e "backing out" ;;
