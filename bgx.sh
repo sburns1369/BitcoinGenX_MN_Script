@@ -50,7 +50,7 @@ echo
 echo -e ${YELLOW}"Upgrades are not available due to massive code change, please re-install"${CLEAR}
 echo -e ${RED}'For Wallet Release: 1.6.1 2/23/2019'${CLEAR}
 echo
-echo -e ${GREEN}"Please enter the number (1-8) of $COIN Masternode(s)"${CLEAR}
+echo -e ${GREEN}"Please enter the number (1-10) of $COIN Masternode(s)"${CLEAR}
 echo -e ${YELLOW}" -If your VPS doesn't support IPv6 press 0 for 1 IPv4"${CLEAR}
 echo -e ${GREEN}"you would like to install :"${CLEAR}
 read NUMBER
@@ -64,6 +64,8 @@ case $NUMBER in
   6)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/BitcoinGenX_6pack.sh);;
   7)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/BitcoinGenX_7pack.sh);;
   8)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/BitcoinGenX_8pack.sh);;
+  9)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/BitcoinGenX_9pack.sh);;
+  10)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/BitcoinGenX_10pack.sh);;
 #  u)bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/${COIN}_MN_Script/master/update_${COIN3l}.sh);;
   *)echo -e ${RED}"Invalid Option - Exiting Setup - Re-run to try again"${CLEAR};;
 esac

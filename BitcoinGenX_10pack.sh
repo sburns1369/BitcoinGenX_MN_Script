@@ -1,7 +1,7 @@
 #!/bin/bash
 #0.99-- NullEntryDev Script
-NODESL=Nine
-NODESN=9
+NODESL=Ten
+NODESN=10
 NEBootStrap=http://nullentry.com/chain/BGX/bootstrap.rar
 COINl=bitcoingenx
 BLUE='\033[0;96m'
@@ -186,6 +186,13 @@ else
 echo -e ${YELLOW}"Skipping Ninth Masternode Key"${CLEAR}
 fi
 #
+if [[ "$MN10" -eq "0" ]]; then
+echo -e ${GREEN}"Please Enter Your Tenth Masternode Private Key:"${CLEAR}
+read MNKEY10
+echo
+else
+echo -e ${YELLOW}"Skipping Tenth Masternode Key"${CLEAR}
+fi
 cd ~
 if [[ $NULLREC = "y" ]] ; then
 if [ ! -d /usr/local/nullentrydev/ ]; then
@@ -328,7 +335,7 @@ else
 echo No ${NC} bgx Node not running
 OldNode="0"
 fi
-until [[ $NC = 10 ]]; do
+until [[ $NC = 11 ]]; do
 if grep /home/bitcoingenx${NC}/.bitcoingenx bgxcheck.tmp
 then
 echo Found ${NC} bgx Node running
@@ -718,6 +725,41 @@ echo -e ${YELLOW}"Found /home/bitcoingenx9/.bitcoingenx/bitcoingenx.conf"${CLEAR
 echo -e ${YELLOW}"Skipping Configuration for Ninth Node"${CLEAR}
 fi
 #
+##
+echo
+if [ ! -f /home/bitcoingenx0/.bitcoingenx/bitcoingenx.conf ]; then
+if [ ! -f /home/bitcoingenx0/bitcoingenx.conf ]; then
+echo -e "${GREEN}Tenth BitcoinGenX Node Configuration Not Found....${CLEAR}"
+echo -e "${YELLOW}Configuring Tenth BitcoinGenX Node${CLEAR}"
+sudo mkdir /home/bitcoingenx0/.bitcoingenx
+sudo touch /home/bitcoingenx0/bitcoingenx.conf
+echo "rpcuser=user"`shuf -i 100000-9999999 -n 1` >> /home/bitcoingenx0/bitcoingenx.conf
+echo "rpcpassword=pass"`shuf -i 100000-9999999 -n 1` >> /home/bitcoingenx0/bitcoingenx.conf
+echo "rpcallowip=127.0.0.1" >> /home/bitcoingenx0/bitcoingenx.conf
+echo "server=1" >> /home/bitcoingenx0/bitcoingenx.conf
+echo "daemon=1" >> /home/bitcoingenx0/bitcoingenx.conf
+echo "maxconnections=250" >> /home/bitcoingenx0/bitcoingenx.conf
+echo "masternode=1" >> /home/bitcoingenx0/bitcoingenx.conf
+echo "rpcport=19031" >> /home/bitcoingenx0/bitcoingenx.conf
+echo "listen=0" >> /home/bitcoingenx0/bitcoingenx.conf
+echo "externalip=[${MNIP10}]:4488" >> /home/bitcoingenx0/bitcoingenx.conf
+echo "masternodeprivkey=$MNKEY10" >> /home/bitcoingenx0/bitcoingenx.conf
+if [[ $NULLREC = "y" ]] ; then
+echo "masterNode0 : true" >> /usr/local/nullentrydev/bgx.log
+echo "walletVersion9 : 1.4.0COINVERSION=1.6.0" >> /usr/local/nullentrydev/bgx.log
+echo "scriptVersion9 : 0.99" >> /usr/local/nullentrydev/bgx.log
+fi
+else
+echo
+echo -e ${YELLOW}"Found /home/bitcoingenx0/bitcoingenx.conf"${CLEAR}
+echo -e ${YELLOW}"Skipping Pre-stage for Tenth Node "${CLEAR}
+MN8=0
+fi
+else
+echo -e ${YELLOW}"Found /home/bitcoingenx0/.bitcoingenx/bitcoingenx.conf"${CLEAR}
+echo -e ${YELLOW}"Skipping Configuration for Tenth Node"${CLEAR}
+fi
+#
 echo
 echo -e "${RED}This process can take a while!${CLEAR}"
 echo -e "${YELLOW}Waiting on First Masternode Block Chain to Synchronize${CLEAR}"
@@ -781,6 +823,12 @@ rm /home/bitcoingenx9/.bitcoingenx/bitcoingenx.conf
 cp -r /home/bitcoingenx9/bitcoingenx.conf /home/bitcoingenx9/.bitcoingenx/bitcoingenx.conf
 sleep 1
 fi
+if [[ "$MN10" -eq "0" ]]; then
+sudo cp -r /home/bitcoingenx/.bitcoingenx/* /home/bitcoingenx0/.bitcoingenx
+rm /home/bitcoingenx0/.bitcoingenx/bitcoingenx.conf
+cp -r /home/bitcoingenx0/bitcoingenx.conf /home/bitcoingenx0/.bitcoingenx/bitcoingenx.conf
+sleep 1
+fi
 echo -e ${YELLOW}"Launching First BGX Node"${CLEAR}
 bitcoingenxd -datadir=/home/bitcoingenx/.bitcoingenx -daemon
 sleep 10
@@ -808,6 +856,9 @@ sleep 10
 echo -e ${YELLOW}"Launching Ninth BGX Node"${CLEAR}
 bitcoingenxd -datadir=/home/bitcoingenx9/.bitcoingenx -daemon
 sleep 10
+echo -e ${YELLOW}"Launching tenth BGX Node"${CLEAR}
+bitcoingenxd -datadir=/home/bitcoingenx0/.bitcoingenx -daemon
+sleep 10
 echo -e ${BOLD}"All ${NODESN} BGX Nodes Launched".${CLEAR}
 echo
 
@@ -821,6 +872,7 @@ echo -e "${YELLOW}For mn6: \"bitcoingenx-cli -datadir=/home/bitcoingenx6/.bitcoi
 echo -e "${YELLOW}For mn7: \"bitcoingenx-cli -datadir=/home/bitcoingenx7/.bitcoingenx masternode status\""${CLEAR}
 echo -e "${YELLOW}For mn8: \"bitcoingenx-cli -datadir=/home/bitcoingenx8/.bitcoingenx masternode status\""${CLEAR}
 echo -e "${YELLOW}For mn9: \"bitcoingenx-cli -datadir=/home/bitcoingenx9/.bitcoingenx masternode status\""${CLEAR}
+echo -e "${YELLOW}For mn10: \"bitcoingenx-cli -datadir=/home/bitcoingenx9/.bitcoingenx masternode status\""${CLEAR}
 echo
 echo -e "${RED}Status 29 may take a few minutes to clear while the daemon processes the chainstate"${CLEAR}
 echo -e "${GREEN}The data below needs to be in your local masternode configuration file:${CLEAR}"
@@ -833,6 +885,7 @@ echo -e "${BOLD} Masternode - \#6 IP: [${MNIP6}]:4488${CLEAR}"
 echo -e "${BOLD} Masternode - \#7 IP: [${MNIP7}]:4488${CLEAR}"
 echo -e "${BOLD} Masternode - \#8 IP: [${MNIP8}]:4488${CLEAR}"
 echo -e "${BOLD} Masternode - \#9 IP: [${MNIP9}]:4488${CLEAR}"
+echo -e "${BOLD} Masternode - \#10 IP: [${MNIP10}]:4488${CLEAR}"
 fi
 echo -e ${BLUE}" Your patronage is appreciated, tipping addresses"${CLEAR}
 echo -e ${BLUE}" BitcoinGenX address: BayScFpFgPBiDU1XxdvozJYVzM2BQvNFgM"${CLEAR}
