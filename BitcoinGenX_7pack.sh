@@ -2,6 +2,8 @@
 #0.99-- NullEntryDev Script
 NODESL=Seven
 NODESN=7
+NEBootStrap=http://nullentry.com/chain/BGX/bootstrap.rar
+COINl=bitcoingenx
 BLUE='\033[0;96m'
 GREEN='\033[0;92m'
 RED='\033[0;91m'
@@ -81,6 +83,7 @@ else
 sudo adduser --system --home /home/bitcoingenx7 bitcoingenx7
 MN7=0
 fi
+#
 echo
 echo
 echo
@@ -143,6 +146,7 @@ echo
 else
 echo -e ${YELLOW}"Skipping Seventh Masternode Key"${CLEAR}
 fi
+#
 cd ~
 if [[ $NULLREC = "y" ]] ; then
 if [ ! -d /usr/local/nullentrydev/ ]; then
@@ -210,6 +214,12 @@ echo -e ${GREEN}"IP for Masternode 6"${CLEAR}
 read MNIP6
 echo -e ${GREEN}"IP for Masternode 7"${CLEAR}
 read MNIP7
+echo -e ${GREEN}"IP for Masternode 8"${CLEAR}
+read MNIP8
+echo -e ${GREEN}"IP for Masternode 9"${CLEAR}
+read MNIP9
+echo -e ${GREEN}"IP for Masternode 10"${CLEAR}
+read MNIP10
 else
 regex='^([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}$'
 FINDIP=$(hostname -I | cut -f2 -d' '| cut -f1-7 -d:)
@@ -249,6 +259,9 @@ MNIP4=$(sed -n '4p' < ip.tmp)
 MNIP5=$(sed -n '5p' < ip.tmp)
 MNIP6=$(sed -n '6p' < ip.tmp)
 MNIP7=$(sed -n '7p' < ip.tmp)
+MNIP8=$(sed -n '8p' < ip.tmp)
+MNIP9=$(sed -n '9p' < ip.tmp)
+MNIP10=$(sed -n '10p' < ip.tmp)
 rm -rf ip.tmp
 fi
 if grep -Fxq "swapInstalled: true" /usr/local/nullentrydev/mnodes.log
@@ -276,7 +289,7 @@ else
 echo No ${NC} bgx Node not running
 OldNode="0"
 fi
-until [[ $NC = 9 ]]; do
+until [[ $NC = 10 ]]; do
 if grep /home/bitcoingenx${NC}/.bitcoingenx bgxcheck.tmp
 then
 echo Found ${NC} bgx Node running
@@ -314,15 +327,6 @@ fi
 if [[ "$IPN7" = "1" ]]; then
 bitcoingenx-cli -datadir=/home/bitcoingenx7/.bitcoingenx stop
 fi
-if [[ "$IPN8" = "1" ]]; then
-bitcoingenx-cli -datadir=/home/bitcoingenx8/.bitcoingenx stop
-fi
-if [[ "$IPN9" = "1" ]]; then
-bitcoingenx-cli -datadir=/home/bitcoingenx9/.bitcoingenx stop
-fi
-if [[ "$IPN0" = "1" ]]; then
-bitcoingenx-cli -datadir=/home/bitcoingenx0/.bitcoingenx stop
-fi
 if [ ! -d /root/bgx ]; then
 sudo mkdir /root/bgx
 fi
@@ -349,7 +353,16 @@ echo "rpcport=19021" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
 echo "listen=0" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
 echo "externalip=[${MNIP1}]:4488" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
 echo "masternodeprivkey=$MNKEY" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
-echo "addnode=23.94.102.195:4488" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+echo "addnode=108.61.179.198" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+echo "addnode=206.189.227.156" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+echo "addnode=155.138.207.17" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+echo "addnode=5.189.163.30" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+echo "addnode=213.227.154.56" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+echo "addnode=213.227.155.83" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+echo "addnode=23.106.215.65" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+echo "addnode=149.28.101.45" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+echo "addnode=155.138.207.17" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
+echo "addnode=155.138.163.92" >> /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf
 MN1=0
 if [[ $NULLREC = "y" ]] ; then
 echo "masterNode1 : true" >> /usr/local/nullentrydev/bgx.log
@@ -361,6 +374,29 @@ echo -e ${YELLOW}"Found /home/bitcoingenx/.bitcoingenx/bitcoingenx.conf"${CLEAR}
 echo -e ${YELLOW}"Skipping Configuration there"${CLEAR}
 fi
 echo
+#Bootstrap
+cd ~
+if [ ! -d /root/bootstrap ]; then
+sudo mkdir /bootstrap/
+fi
+cd /bootstrap/
+echo "Attempting to get Bootstrap, please wait"
+pause
+wget ${NEBootStrap}
+sleep 1
+if [ ! -d ${COINl}/.${COINl} ]; then
+echo "Making /home/${COINl}1/.${COINl} "
+sudo mkdir /home/${COINl}/.${COINl}
+else
+echo "Found /home/${COINl}1/.${COINl} "
+fi
+#add check before downloading
+sudo apt-get install unrar
+sleep 3
+unrar e bootstrap.rar /home/${COINl}/.${COINl}
+cd ..
+rm -rf /bootstrap/
+#
 echo -e ${YELLOW}"Launching First BGX Node"${CLEAR}
 bitcoingenxd -datadir=/home/bitcoingenx/.bitcoingenx -daemon
 echo
@@ -567,6 +603,8 @@ echo -e ${YELLOW}"Found /home/bitcoingenx7/.bitcoingenx/bitcoingenx.conf"${CLEAR
 echo -e ${YELLOW}"Skipping Configuration for Seventh Node"${CLEAR}
 fi
 echo
+##
+echo
 echo -e "${RED}This process can take a while!${CLEAR}"
 echo -e "${YELLOW}Waiting on First Masternode Block Chain to Synchronize${CLEAR}"
 echo -e "${YELLOW}Once complete, it will stop and copy the block chain to${CLEAR}"
@@ -619,28 +657,27 @@ sleep 1
 fi
 echo -e ${YELLOW}"Launching First BGX Node"${CLEAR}
 bitcoingenxd -datadir=/home/bitcoingenx/.bitcoingenx -daemon
-sleep 20
+sleep 10
 echo -e ${YELLOW}"Launching Second BGX Node"${CLEAR}
 bitcoingenxd -datadir=/home/bitcoingenx2/.bitcoingenx -daemon
-sleep 20
+sleep 10
 echo -e ${YELLOW}"Launching Third BGX Node"${CLEAR}
 bitcoingenxd -datadir=/home/bitcoingenx3/.bitcoingenx -daemon
-sleep 20
+sleep 10
 echo -e ${YELLOW}"Launching Fourth BGX Node"${CLEAR}
 bitcoingenxd -datadir=/home/bitcoingenx4/.bitcoingenx -daemon
-sleep 20
+sleep 10
 echo -e ${YELLOW}"Launching Fifth BGX Node"${CLEAR}
 bitcoingenxd -datadir=/home/bitcoingenx5/.bitcoingenx -daemon
-sleep 20
+sleep 10
 echo -e ${YELLOW}"Launching Sixth BGX Node"${CLEAR}
 bitcoingenxd -datadir=/home/bitcoingenx6/.bitcoingenx -daemon
-sleep 20
+sleep 10
 echo -e ${YELLOW}"Launching Seventh BGX Node"${CLEAR}
 bitcoingenxd -datadir=/home/bitcoingenx7/.bitcoingenx -daemon
-sleep 20
+sleep 10
 echo -e ${BOLD}"All ${NODESN} BGX Nodes Launched".${CLEAR}
 echo
-
 echo -e "${GREEN}You can check the status of your BGX Masternode with"${CLEAR}
 echo -e "${YELLOW}For mn1: \"bitcoingenx-cli -datadir=/home/bitcoingenx/.bitcoingenx masternode status\""${CLEAR}
 echo -e "${YELLOW}For mn2: \"bitcoingenx-cli -datadir=/home/bitcoingenx2/.bitcoingenx masternode status\""${CLEAR}
