@@ -99,15 +99,6 @@ sudo adduser --system --home /home/bitcoingenx9 bitcoingenx9
 MN9=0
 fi
 #
-#
-if id "bitcoingenx0" >/dev/null 2>&1; then
-echo -e ${YELLOW} "Found user bitcoingenx0!"${CLEAR}
-MN10=1
-else
-sudo adduser --system --home /home/bitcoingenx0 bitcoingenx0
-MN10=0
-fi
-#
 echo
 echo
 echo
