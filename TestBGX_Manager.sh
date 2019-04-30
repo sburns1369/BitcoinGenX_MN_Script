@@ -941,7 +941,6 @@ function_dependencies(){
 function_first_nodecheck(){
         if [ -d /home/${COINl} ]; then
           echo -e ${GREEN}"Found ${COINl}-Oldnode Installation Found - /home/${COINl}" ${CLEAR}
-          pause
         else
           if [ -d /home/${COINl}1 ]; then
           echo -e ${GREEN}"Found ${COINl} Masternode Installation Found - /home/${COINl}" ${CLEAR}
@@ -1168,6 +1167,8 @@ function_masternode_upgrade(){
     echo -e "6 - Masternode Six"
     echo -e "7 - Masternode Seven"
     echo -e "8 - Masternode Eight"
+    echo -e "9 - Masternode Nine"
+    echo -e "10 - Masternode Ten"
     echo -e "B - Back out of Menu"
     echo -e "X - Exit"
     function_read_masternode_upgrade
