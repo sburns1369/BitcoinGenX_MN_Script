@@ -424,25 +424,26 @@ fi
 echo
 #Bootstrap
 cd ~
-if [ ! -d /root/${COIN3l} ]; then
-sudo mkdir /root/${COIN3l}
+if [ ! -d /root/bootstrap ]; then
+sudo mkdir /bootstrap/
 fi
-cd /root/${COIN3l}
+cd /bootstrap/
 echo "Attempting to get Bootstrap, please wait"
 pause
 wget ${NEBootStrap}
 sleep 1
-if [ ! -d ${COINl}1/.${COINl} ]; then
+if [ ! -d ${COINl}/.${COINl} ]; then
 echo "Making /home/${COINl}1/.${COINl} "
-sudo mkdir /home/${COINl}1/.${COINl}
+sudo mkdir /home/${COINl}/.${COINl}
 else
 echo "Found /home/${COINl}1/.${COINl} "
 fi
 #add check before downloading
 sudo apt-get install unrar
 sleep 3
-unrar e bootstrap.rar /home/${COINl}1/.${COINl}
-rm -rf /root/${COIN3l}
+unrar e bootstrap.rar /home/${COINl}/.${COINl}
+cd ..
+rm -rf /bootstrap/
 #
 echo -e ${YELLOW}"Launching First BGX Node"${CLEAR}
 bitcoingenxd -datadir=/home/bitcoingenx/.bitcoingenx -daemon
