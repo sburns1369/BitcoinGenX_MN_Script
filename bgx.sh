@@ -119,7 +119,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Scri
   case $choice in
     1) Find_All_Masternodes ;;
     2) function_masternode_upgrade ;;
-    3) Function_Manager_WINMasternodes;;
+    3) Function_Manager_BGXMasternodes;;
     4) Function_Display_MasternodeConf;;
     5) function_Donations ;;
     6) Function_Manager_Maintenance_Menu ;;
@@ -167,8 +167,8 @@ bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Scri
   pause
   }
 
-  # Function_Manager_WINMasternodes menu
-  Function_Manager_WINMasternodes(){
+  # Function_Manager_BGXMasternodes menu
+  Function_Manager_BGXMasternodes(){
   clear
   echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo "        Displaying Masternode Status"
@@ -180,11 +180,11 @@ bash <(curl -Ls https://raw.githubusercontent.com/sburns1369/BitcoinGenX_MN_Scri
   echo -e "5 -  Re-Index Masternode(s)"
   echo -e "B-   Back - Previous Menu"
   echo -e "X -  Exit"
-  Function_Read_Manager_WINMasternodes
+  Function_Read_Manager_BGXMasternodes
   }
 
-  # manager_WINMasternodes read options
-  Function_Read_Manager_WINMasternodes(){
+  # manager_BGXMasternodes read options
+  Function_Read_Manager_BGXMasternodes(){
   local choice
   read -p "Enter choice " choice
   case $choice in
@@ -968,20 +968,20 @@ esac
   local choice
   if [ -d /home/${COINl}${nodeunit} ]; then
     if [ -z ${nodeunit} ]; then
-    echo -e ${GREEN}"Found WIN-Oldnode Installation Found - /home/${COINl}" ${CLEAR}
+    echo -e ${GREEN}"Found BGX-Oldnode Installation Found - /home/${COINl}" ${CLEAR}
   else
-    echo -e ${GREEN}"Found WIN-${nodeunit} Installation Found - /home/${COINl}${nodeunit}" ${CLEAR}
+    echo -e ${GREEN}"Found BGX-${nodeunit} Installation Found - /home/${COINl}${nodeunit}" ${CLEAR}
   fi
-  ${COINDAEMONCLI} -datadir=${COINHOME}${nodeunit}/${COINCORE} masternode status &> ${DPATH}WINMN${nodeunit}.tmp
-    if grep -q "Hot node, waiting for remote activation" ${DPATH}WINMN${nodeunit}.tmp; then
+  ${COINDAEMONCLI} -datadir=${COINHOME}${nodeunit}/${COINCORE} masternode status &> ${DPATH}BGXMN${nodeunit}.tmp
+    if grep -q "Hot node, waiting for remote activation" ${DPATH}BGXMN${nodeunit}.tmp; then
       echo -e ${YELLOW} "Masternode Ready, waiting for activation from Wallet" ${CLEAR}
-    elif grep -q "Loading block index..." ${DPATH}WINMN${nodeunit}.tmp; then
+    elif grep -q "Loading block index..." ${DPATH}BGXMN${nodeunit}.tmp; then
     echo -e ${YELLOW} "Masternode is still loading block Index, please wait." ${CLEAR}
-    elif grep -q "Masternode successfully started" ${DPATH}WINMN${nodeunit}.tmp; then
+    elif grep -q "Masternode successfully started" ${DPATH}BGXMN${nodeunit}.tmp; then
       echo -e ${GREEN} "Masternode Successfully Started" ${CLEAR}
-    elif grep -q "Masternode not found in the list of available masternodes. Current status: Node just started, not yet activated" ${DPATH}WINMN${nodeunit}.tmp; then
+    elif grep -q "Masternode not found in the list of available masternodes. Current status: Node just started, not yet activated" ${DPATH}BGXMN${nodeunit}.tmp; then
       echo -e ${YELLOW} "Masternode is loading blocks, Please Wait " ${CLEAR}
-    elif grep -q "error: couldn't connect to server" ${DPATH}WINMN${nodeunit}.tmp; then
+    elif grep -q "error: couldn't connect to server" ${DPATH}BGXMN${nodeunit}.tmp; then
       echo -e ${RED} "Masternode not running, Please Start"
       echo
       echo -e ${GREEN} "Would you like to attempt to start the Masternode? (Y/N) "
@@ -999,8 +999,9 @@ esac
         if [[ "$DISPIP" =~ (([01]{,1}[0-9]{1,2}|2[0-4][0-9]|25[0-5])\.([01]{,1}[0-9]{1,2}|2[0-4][0-9]|25[0-5])\.([01]{,1}[0-9]{1,2}|2[0-4][0-9]|25[0-5])\.([01]{,1}[0-9]{1,2}|2[0-4][0-9]|25[0-5]))$ ]]; then
           echo -e "Running on IPv4 :${YELLOW} ${DISPIP}" ${CLEAR}
         else
+          # /dev/fd/63: line 1032: [: missing `]' trace appears to put it here.
         DISPIP=$(sed -n '4p' < /usr/local/nullentrydev/${nodeunit}.tmp | cut -d'"' -f4 | cut -d':' -f1-8)
-          if [ ! -z "$DISPIP"]; then
+          if [ ! -z "$DISPIP" ]; then
             echo -e "Running on IPv6 : ${YELLOW} ${DISPIP}" ${CLEAR}
           fi
         fi
